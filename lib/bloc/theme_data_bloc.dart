@@ -24,6 +24,7 @@ class ThemeDataBloc extends Bloc<ThemeDataEvent, ThemeDataState> {
         Geolocator.getCurrentPosition(
             locationSettings:
                 LocationSettings(accuracy: LocationAccuracy.best)),
+                
       ]);
 
       final Position position = results[0];

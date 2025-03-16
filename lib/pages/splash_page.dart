@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:identity/routes/app_route_constants.dart';
@@ -12,22 +11,22 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-  late SimpleAnimation controller;
+  late final RiveAnimationController controller;
+
   bool isPlaying = false;
-  final Key animationKey = ValueKey('splash_animation');
 
   @override
   void dispose() {
-    controller.dispose();
+    if (controller.isActive) {
+      controller.dispose();
+    }
     super.dispose();
   }
 
   @override
   void initState() {
     super.initState();
-    controller = SimpleAnimation('Entrence', autoplay: true);
-
-    Future.delayed(const Duration(milliseconds: 2800), () {
+    controller = OneShotAnimation('Entrence', autoplay: true, onStop: () {
       if (mounted) {
         GoRouter.of(context).goNamed(IdentityRouteConstant.startedRouteName);
       }
@@ -47,7 +46,6 @@ class _SplashPageState extends State<SplashPage> {
                   ? 'assets/rive_motion/identity_dark_mode_splash.riv'
                   : 'assets/rive_motion/identity_light_mode_splash.riv',
               fit: BoxFit.contain,
-              key: animationKey,
               onInit: (artboard) {
                 artboard.addController(controller);
               },
