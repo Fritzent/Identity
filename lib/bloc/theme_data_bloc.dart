@@ -24,7 +24,6 @@ class ThemeDataBloc extends Bloc<ThemeDataEvent, ThemeDataState> {
         Geolocator.getCurrentPosition(
             locationSettings:
                 LocationSettings(accuracy: LocationAccuracy.best)),
-                
       ]);
 
       final Position position = results[0];
@@ -43,17 +42,19 @@ class ThemeDataBloc extends Bloc<ThemeDataEvent, ThemeDataState> {
           themeMode: isNight ? ThemeMode.dark : ThemeMode.light,
           isLoading: true));
     } catch (e) {
+      print('onAutoThemeEvent error : $e');
       emit(state.copyWith(
           isError: true, errorMessage: e.toString(), isLoading: true));
     }
   }
 
-  Future<Map<String, DateTime>?> _fetchSunriseSunset(double lat, double lon) async {
-  final result = await compute<List<double>, Map<String, String>?>(
-      ThemeUtils.fetchSunriseSunsetInBackground, [lat, lon]);
+  Future<Map<String, DateTime>?> _fetchSunriseSunset(
+      double lat, double lon) async {
+    final result = await compute<List<double>, Map<String, String>?>(
+        ThemeUtils.fetchSunriseSunsetInBackground, [lat, lon]);
 
-  return result?.map((key, value) => MapEntry(key, DateTime.parse(value)));
-}
+    return result?.map((key, value) => MapEntry(key, DateTime.parse(value)));
+  }
 
   void startAutoThemeTimer() {
     Timer.periodic(const Duration(minutes: 30), (timer) {

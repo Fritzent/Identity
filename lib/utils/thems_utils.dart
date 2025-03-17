@@ -48,6 +48,7 @@ class ThemeUtils {
         return parseSunriseSunsetData(data['results']);
       }
     } catch (e) {
+      print('parseSunriseSunsetData error : $e');
       return null;
     }
     return null;

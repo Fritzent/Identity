@@ -27,9 +27,13 @@ class _SplashPageState extends State<SplashPage> {
   void initState() {
     super.initState();
     controller = OneShotAnimation('Entrence', autoplay: true, onStop: () {
-      if (mounted) {
-        GoRouter.of(context).goNamed(IdentityRouteConstant.startedRouteName);
-      }
+      Future.delayed(const Duration(milliseconds: 100), () {
+        if (mounted) {
+          GoRouter.of(context).goNamed(IdentityRouteConstant.startedRouteName);
+        } else {
+          print('Widget is not mounted, skipping navigation.');
+        }
+      });
     });
   }
 

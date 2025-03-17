@@ -1,0 +1,15 @@
+{
+  "@@locale": "en",
+  
+  "appName": "Identity",
+
+  "welcomeToText" : "Welcome to ",
+
+  "identityMotto" : " - your personal cv management",
+
+  "getStarted" : "Get Started",
+
+  "alreadyHaveAccount" : "Already have an account? ",
+
+  "signIn" : "Sign In"
+}

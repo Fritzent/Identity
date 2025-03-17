@@ -24,7 +24,7 @@ class CustomTextTheme {
     bodyMedium: GoogleFonts.nunito(
       fontSize: 16,
       fontWeight: FontWeight.normal,
-      color: ColorList.generalGrayAppFonts,
+      color: ColorList.lightModeBackground,
     ),
     bodySmall: GoogleFonts.nunito(
       fontSize: 12,
@@ -76,7 +76,7 @@ class CustomTextTheme {
     bodyMedium: GoogleFonts.nunito(
       fontSize: 16,
       fontWeight: FontWeight.normal,
-      color: ColorList.generalGrayAppFonts,
+      color: ColorList.darkModeBackground,
     ),
     bodySmall: GoogleFonts.nunito(
       fontSize: 12,

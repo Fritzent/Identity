@@ -1,0 +1,15 @@
+{
+  "@@locale": "id",
+  
+  "appName": "Identity",
+
+  "welcomeToText" : "Selamat datang di ",
+  
+  "identityMotto" : " - management cv pribadi anda",
+
+  "getStarted" : "Mulai",
+  
+  "alreadyHaveAccount" : "Sudah punya akun? ",
+
+  "signIn" : "Masuk"
+}

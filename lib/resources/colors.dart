@@ -11,6 +11,7 @@ class ColorList {
   static const Color generalGrayAppFonts = Color(0xffA7A7A7);
   static const Color generalGray100AppFonts = Color(0xff676767);
   static const Color generalBlueAppFonts = Color(0xff3777EE);
+  static const Color generalBlue100AppFonts = Color(0xff1EB6D7);
 
   static const Color generalBlurColor = Color(0xff9A9A9A);
 
