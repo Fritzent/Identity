@@ -21,7 +21,7 @@ class _StartedPageState extends State<StartedPage> {
       body: Center(
         child: ConstrainedBox(
           constraints: BoxConstraints(
-            maxWidth: kIsWeb ? MediaQuery.of(context).size.width * 0.4 : MediaQuery.of(context).size.width,
+            maxWidth: kIsWeb ? (MediaQuery.of(context).size.width / 2 >= 800 ? MediaQuery.of(context).size.width * 0.4 : MediaQuery.of(context).size.width) : MediaQuery.of(context).size.width,
           ),
           child: Padding(
             padding: const EdgeInsets.only(
