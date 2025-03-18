@@ -11,5 +11,27 @@
 
   "alreadyHaveAccount" : "Already have an account? ",
 
-  "signIn" : "Sign In"
+  "signIn" : "Sign In",
+
+  "signInSubTitle" : "Let’s connect to your account!",
+
+  "fullNameText" : "Full Name",
+
+  "inputFullNameHintText" : "Input your full name",
+
+  "emailText" : "Email",
+
+  "inputEmailHintText" : "Input your active email",
+
+  "passwordText" : "Password",
+
+  "passwordHintText" : "Input your secret password",
+
+  "continueWithText" : "Or  Continue With",
+
+  "dontHaveAccount" : "Don’t have an account? ",
+
+  "signUp" : "Sign Up",
+
+  "google" : "Google"
 }

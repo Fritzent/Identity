@@ -18,4 +18,7 @@ class ColorList {
   static const Color topGreenAppColor = Color(0xff16C082);
   static const Color bottomGreenAppColor = Color(0xff15BD80);
 
+  static const Color redColor = Color(0xffE73701);
+  static const Color greenColor = Color(0xff578557);
+
 }

@@ -130,6 +130,72 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Sign In'**
   String get signIn;
+
+  /// No description provided for @signInSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Let’s connect to your account!'**
+  String get signInSubTitle;
+
+  /// No description provided for @fullNameText.
+  ///
+  /// In en, this message translates to:
+  /// **'Full Name'**
+  String get fullNameText;
+
+  /// No description provided for @inputFullNameHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Input your full name'**
+  String get inputFullNameHintText;
+
+  /// No description provided for @emailText.
+  ///
+  /// In en, this message translates to:
+  /// **'Email'**
+  String get emailText;
+
+  /// No description provided for @inputEmailHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Input your active email'**
+  String get inputEmailHintText;
+
+  /// No description provided for @passwordText.
+  ///
+  /// In en, this message translates to:
+  /// **'Password'**
+  String get passwordText;
+
+  /// No description provided for @passwordHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Input your secret password'**
+  String get passwordHintText;
+
+  /// No description provided for @continueWithText.
+  ///
+  /// In en, this message translates to:
+  /// **'Or  Continue With'**
+  String get continueWithText;
+
+  /// No description provided for @dontHaveAccount.
+  ///
+  /// In en, this message translates to:
+  /// **'Don’t have an account? '**
+  String get dontHaveAccount;
+
+  /// No description provided for @signUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Sign Up'**
+  String get signUp;
+
+  /// No description provided for @google.
+  ///
+  /// In en, this message translates to:
+  /// **'Google'**
+  String get google;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

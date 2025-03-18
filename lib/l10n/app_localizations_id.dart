@@ -25,4 +25,37 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get signIn => 'Masuk';
+
+  @override
+  String get signInSubTitle => 'Ayo hubungkan ke akun Anda!';
+
+  @override
+  String get fullNameText => 'Nama Lengkap';
+
+  @override
+  String get inputFullNameHintText => 'Silahkan ketik nama lengkap anda';
+
+  @override
+  String get emailText => 'Email';
+
+  @override
+  String get inputEmailHintText => 'Silahkan ketik email aktif anda';
+
+  @override
+  String get passwordText => 'Kata sandi';
+
+  @override
+  String get passwordHintText => 'Ketik password rahasia anda';
+
+  @override
+  String get continueWithText => 'Atau Lanjutkan dengan';
+
+  @override
+  String get dontHaveAccount => 'Belum punya akun? ';
+
+  @override
+  String get signUp => 'Daftar';
+
+  @override
+  String get google => 'Google';
 }

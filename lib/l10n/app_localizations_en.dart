@@ -25,4 +25,37 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get signIn => 'Sign In';
+
+  @override
+  String get signInSubTitle => 'Let’s connect to your account!';
+
+  @override
+  String get fullNameText => 'Full Name';
+
+  @override
+  String get inputFullNameHintText => 'Input your full name';
+
+  @override
+  String get emailText => 'Email';
+
+  @override
+  String get inputEmailHintText => 'Input your active email';
+
+  @override
+  String get passwordText => 'Password';
+
+  @override
+  String get passwordHintText => 'Input your secret password';
+
+  @override
+  String get continueWithText => 'Or  Continue With';
+
+  @override
+  String get dontHaveAccount => 'Don’t have an account? ';
+
+  @override
+  String get signUp => 'Sign Up';
+
+  @override
+  String get google => 'Google';
 }

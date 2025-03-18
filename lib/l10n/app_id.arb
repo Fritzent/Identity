@@ -11,5 +11,27 @@
   
   "alreadyHaveAccount" : "Sudah punya akun? ",
 
-  "signIn" : "Masuk"
+  "signIn" : "Masuk",
+
+  "signInSubTitle" : "Ayo hubungkan ke akun Anda!",
+
+  "fullNameText" : "Nama Lengkap",
+
+  "inputFullNameHintText" : "Silahkan ketik nama lengkap anda",
+
+  "emailText" : "Email",
+
+  "inputEmailHintText" : "Silahkan ketik email aktif anda",
+
+  "passwordText" : "Kata sandi",
+
+  "passwordHintText" : "Ketik password rahasia anda",
+
+  "continueWithText" : "Atau Lanjutkan dengan",
+
+  "dontHaveAccount" : "Belum punya akun? ",
+
+  "signUp" : "Daftar",
+
+  "google" : "Google"
 }
