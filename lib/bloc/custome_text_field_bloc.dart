@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:identity/l10n/app_localizations.dart';
 
 part 'custome_text_field_event.dart';
 part 'custome_text_field_state.dart';
@@ -26,7 +27,7 @@ class CustomeTextFieldBloc extends Bloc<CustomeTextFieldEvent, CustomeTextFieldS
     String error = '';
 
     if (event.value.isEmpty && state.countInit >= 1) {
-      error = 'kolom tidak boleh kosong';
+      error = AppLocalizations.of(state.context!)!.textFieldErrorEmptyMessage(state.formSection);
     }
 
     int sumCountInit = state.countInit + 1;
@@ -35,6 +36,8 @@ class CustomeTextFieldBloc extends Bloc<CustomeTextFieldEvent, CustomeTextFieldS
         isEmpty: event.isEmpty,
         fieldValue: event.value,
         errorMessage: error,
+        context: event.context,
+        formSection: event.formSection,
         countInit: sumCountInit));
   }
 

@@ -15,13 +15,21 @@
 
   "signInSubTitle" : "Let’s connect to your account!",
 
-  "fullNameText" : "Full Name",
+  "fullNameText" : "Full name",
 
   "inputFullNameHintText" : "Input your full name",
 
   "emailText" : "Email",
 
   "inputEmailHintText" : "Input your active email",
+
+  "createPasswordText" : "Create password",
+
+  "createPasswordHintText" : "Input your secret password",
+
+  "confirmPasswordText" : "Confirm password",
+
+  "confirmPasswordHintText" : "Confirm your secret password",
 
   "passwordText" : "Password",
 
@@ -33,5 +41,9 @@
 
   "signUp" : "Sign Up",
 
-  "google" : "Google"
+  "google" : "Google",
+
+  "signUpSubTitle" : "First let’s create your account!",
+
+  "textFieldErrorEmptyMessage" : "Column {field} cannot be empty"
 }

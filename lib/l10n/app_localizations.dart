@@ -140,7 +140,7 @@ abstract class AppLocalizations {
   /// No description provided for @fullNameText.
   ///
   /// In en, this message translates to:
-  /// **'Full Name'**
+  /// **'Full name'**
   String get fullNameText;
 
   /// No description provided for @inputFullNameHintText.
@@ -160,6 +160,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Input your active email'**
   String get inputEmailHintText;
+
+  /// No description provided for @createPasswordText.
+  ///
+  /// In en, this message translates to:
+  /// **'Create password'**
+  String get createPasswordText;
+
+  /// No description provided for @createPasswordHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Input your secret password'**
+  String get createPasswordHintText;
+
+  /// No description provided for @confirmPasswordText.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm password'**
+  String get confirmPasswordText;
+
+  /// No description provided for @confirmPasswordHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Confirm your secret password'**
+  String get confirmPasswordHintText;
 
   /// No description provided for @passwordText.
   ///
@@ -196,6 +220,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Google'**
   String get google;
+
+  /// No description provided for @signUpSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'First let’s create your account!'**
+  String get signUpSubTitle;
+
+  /// No description provided for @textFieldErrorEmptyMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Column {field} cannot be empty'**
+  String textFieldErrorEmptyMessage(Object field);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

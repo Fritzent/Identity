@@ -12,8 +12,10 @@ class OnFocusChange extends CustomeTextFieldEvent {
 class OnTextChange extends CustomeTextFieldEvent {
   final bool isEmpty;
   final String value;
+  final BuildContext context;
+  final String formSection;
 
-  OnTextChange(this.isEmpty, this.value);
+  OnTextChange(this.isEmpty, this.value, this.context, this.formSection);
 }
 
 class OnUpdateField extends CustomeTextFieldEvent {

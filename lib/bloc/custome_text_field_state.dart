@@ -5,9 +5,11 @@ class CustomeTextFieldState {
   final bool isEmpty;
   final String errorMessage;
   final String fieldValue;
+  final String formSection;
   final FocusNode? focusNode;
   final TextEditingController? controller;
   final int countInit;
+  final BuildContext? context;
 
 
   CustomeTextFieldState({
@@ -18,6 +20,8 @@ class CustomeTextFieldState {
     TextEditingController? controller,
     this.fieldValue = '',
     this.countInit = 0,
+    this.context,
+    this.formSection = '',
   }) : controller = controller ?? TextEditingController(
     text: ''),
     focusNode = focusNode ?? FocusNode();
@@ -30,6 +34,8 @@ class CustomeTextFieldState {
     TextEditingController? controller,
     String? fieldValue,
     int? countInit,
+    BuildContext? context,
+    String? formSection,
   }) {
     return CustomeTextFieldState(
       isFocused: isFocused ?? this.isFocused,
@@ -39,6 +45,8 @@ class CustomeTextFieldState {
       controller: controller ?? this.controller,
       fieldValue: fieldValue ?? this.fieldValue,
       countInit : countInit ?? this.countInit,
+      context: context ?? this.context,
+      formSection: formSection ?? this.formSection,
     );
   }
 }

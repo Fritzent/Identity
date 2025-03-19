@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:identity/pages/authentication/login/login_page.dart';
+import 'package:identity/pages/authentication/registration/register_page.dart';
 import 'package:identity/pages/splash_page.dart';
 import 'package:identity/pages/started_page.dart';
 import 'package:identity/routes/app_route_constants.dart';
@@ -29,6 +30,13 @@ class MyAppRouter {
             pageBuilder: (context, state) {
               return MaterialPage(child: LoginPage());
             }),
+        GoRoute(
+          path: '/register_page',
+          name: IdentityRouteConstant.registerRouteName,
+          pageBuilder: (context, state) {
+            return MaterialPage(child: RegisterPage());
+          }
+        )
 
         /* Example when its need params */
         // GoRoute(

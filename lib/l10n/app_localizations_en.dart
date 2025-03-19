@@ -30,7 +30,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get signInSubTitle => 'Let’s connect to your account!';
 
   @override
-  String get fullNameText => 'Full Name';
+  String get fullNameText => 'Full name';
 
   @override
   String get inputFullNameHintText => 'Input your full name';
@@ -40,6 +40,18 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get inputEmailHintText => 'Input your active email';
+
+  @override
+  String get createPasswordText => 'Create password';
+
+  @override
+  String get createPasswordHintText => 'Input your secret password';
+
+  @override
+  String get confirmPasswordText => 'Confirm password';
+
+  @override
+  String get confirmPasswordHintText => 'Confirm your secret password';
 
   @override
   String get passwordText => 'Password';
@@ -58,4 +70,12 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get google => 'Google';
+
+  @override
+  String get signUpSubTitle => 'First let’s create your account!';
+
+  @override
+  String textFieldErrorEmptyMessage(Object field) {
+    return 'Column $field cannot be empty';
+  }
 }

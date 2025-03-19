@@ -13,9 +13,9 @@
 
   "signIn" : "Masuk",
 
-  "signInSubTitle" : "Ayo hubungkan ke akun Anda!",
+  "signInSubTitle" : "Ayo hubungkan ke akun anda!",
 
-  "fullNameText" : "Nama Lengkap",
+  "fullNameText" : "Nama lengkap",
 
   "inputFullNameHintText" : "Silahkan ketik nama lengkap anda",
 
@@ -23,15 +23,27 @@
 
   "inputEmailHintText" : "Silahkan ketik email aktif anda",
 
+  "createPasswordText" : "Buat kata sandi",
+
+  "createPasswordHintText" : "Ketik kata sandi rahasia anda",
+
+  "confirmPasswordText" : "Konfirmasi kata sandi",
+
+  "confirmPasswordHintText" : "Konfirmasi kata sandi rahasia anda",
+
   "passwordText" : "Kata sandi",
 
-  "passwordHintText" : "Ketik password rahasia anda",
+  "passwordHintText" : "Ketik kata sandi rahasia anda",
 
-  "continueWithText" : "Atau Lanjutkan dengan",
+  "continueWithText" : "Atau lanjutkan dengan",
 
   "dontHaveAccount" : "Belum punya akun? ",
 
   "signUp" : "Daftar",
 
-  "google" : "Google"
+  "google" : "Google",
+
+  "signUpSubTitle" : "Pertama mari kita buat akun Anda!",
+
+  "textFieldErrorEmptyMessage" : "Kolom {field} tidak boleh kosong"
 }

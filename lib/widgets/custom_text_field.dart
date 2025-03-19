@@ -76,7 +76,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
           isListenerAdded = true;
           state.controller?.addListener(() {
             bloc.add(OnTextChange(
-                state.controller!.text.isEmpty, state.controller!.text));
+                state.controller!.text.isEmpty, state.controller!.text, context, widget.formSection));
           });
         }
 
