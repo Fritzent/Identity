@@ -90,9 +90,9 @@ class _StartedPageState extends State<StartedPage> {
                             value: state.locale.languageCode,
                             onChanged: (value) {
                               if (value != null) {
-                                context.read<LanguageDataBloc>().add(ChangeLanguage(
-                                  Locale(value)
-                                ));
+                                context
+                                    .read<LanguageDataBloc>()
+                                    .add(ChangeLanguage(Locale(value)));
                               }
                             },
                             buttonStyleData: ButtonStyleData(
@@ -200,7 +200,10 @@ class _StartedPageState extends State<StartedPage> {
                           Gap(FontList.font40),
                           GestureDetector(
                               onTap: () {
-                                print('Hello Button');
+                                if (mounted) {
+                                  GoRouter.of(context).pushReplacementNamed(
+                                      IdentityRouteConstant.registerRouteName);
+                                }
                               },
                               child: CustomButton(
                                   textButton: AppLocalizations.of(context)!

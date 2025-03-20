@@ -20,6 +20,7 @@ void main() async {
   await Hive.initFlutter();
   Hive.registerAdapter(ThemesAdapter());
   await Hive.openBox('themesBox');
+  await Hive.openBox('languageBox');
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -38,7 +39,7 @@ void main() async {
           create: (context) => ThemeDataBloc()..add(AutoThemeEvent()),
         ),
         BlocProvider(
-          create: (context) => LanguageDataBloc(),
+          create: (context) => LanguageDataBloc()..add(LoadLanguage()),
         ),
       ],
       child: const MainApp(),
