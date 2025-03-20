@@ -12,6 +12,7 @@ class CustomeTextFieldBloc extends Bloc<CustomeTextFieldEvent, CustomeTextFieldS
     on<OnFocusChange>(onFocusChange);
     on<OnTextChange>(onTextChange);
     on<OnUpdateField>(onUpdateField);
+    on<OnChangeObscureText> (onChangeObscureText);
   }
 
   FutureOr<void> onFocusChange(
@@ -45,5 +46,9 @@ class CustomeTextFieldBloc extends Bloc<CustomeTextFieldEvent, CustomeTextFieldS
       OnUpdateField event, Emitter<CustomeTextFieldState> emit) {
     final newController = TextEditingController(text: event.value);
     emit(state.copyWith(controller: newController));
+  }
+
+  FutureOr<void> onChangeObscureText(OnChangeObscureText event, Emitter<CustomeTextFieldState> emit) {
+    emit(state.copyWith(obscureText: event.obscureText));
   }
 }

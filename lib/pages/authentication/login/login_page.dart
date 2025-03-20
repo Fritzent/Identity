@@ -103,6 +103,7 @@ class _LoginPageState extends State<LoginPage> {
                                       hasRightIcon: true,
                                       rightIconPath:
                                           'assets/image/ic_hide_password.svg',
+                                      obscureText: true,
                                       onChanged: (value) {},
                                     ),
                                     Gap(FontList.font16),

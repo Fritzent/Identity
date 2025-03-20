@@ -19,6 +19,7 @@ class CustomTextField extends StatefulWidget {
   final String? rightIconPath;
   final bool hasLeftIcon;
   final String? leftIconPath;
+  final bool obscureText;
 
   const CustomTextField(
       {super.key,
@@ -33,7 +34,8 @@ class CustomTextField extends StatefulWidget {
       this.hasRightIcon = false,
       this.rightIconPath,
       this.hasLeftIcon = false,
-      this.leftIconPath});
+      this.leftIconPath,
+      this.obscureText = false});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -75,8 +77,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
             state.focusNode!.hasFocus) {
           isListenerAdded = true;
           state.controller?.addListener(() {
-            bloc.add(OnTextChange(
-                state.controller!.text.isEmpty, state.controller!.text, context, widget.formSection));
+            bloc.add(OnTextChange(state.controller!.text.isEmpty,
+                state.controller!.text, context, widget.formSection));
           });
         }
 
@@ -99,6 +101,9 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   controller: state.controller,
                   onChanged: widget.onChanged,
                   validator: widget.validator,
+                  obscureText: widget.obscureText == true
+                      ? state.obscureText
+                      : widget.obscureText,
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         fontSize: FontList.font16,
                         fontWeight: FontWeight.normal,
@@ -112,7 +117,8 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     ),
                     prefixIcon: widget.hasLeftIcon
                         ? Container(
-                            padding: EdgeInsets.all(kIsWeb ? FontList.font10 : FontList.font14),
+                            padding: EdgeInsets.all(
+                                kIsWeb ? FontList.font10 : FontList.font14),
                             constraints: BoxConstraints(
                               maxWidth: FontList.font4,
                               maxHeight: FontList.font4,
@@ -124,15 +130,29 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           )
                         : null,
                     suffixIcon: widget.hasRightIcon
-                        ? Container(
-                            padding: EdgeInsets.all(kIsWeb ? FontList.font10 : FontList.font14),
-                            constraints: BoxConstraints(
-                              maxWidth: FontList.font4,
-                              maxHeight: FontList.font4,
-                            ),
-                            child: SvgPicture.asset(
-                              widget.rightIconPath.toString(),
-                              fit: BoxFit.contain,
+                        ? GestureDetector(
+                            onTap: () {
+                              bool currentObscureTextState = state.obscureText;
+                              context.read<CustomeTextFieldBloc>().add(
+                                  OnChangeObscureText(
+                                      !currentObscureTextState));
+                            },
+                            child: Container(
+                              padding: EdgeInsets.all(
+                                  kIsWeb ? FontList.font10 : FontList.font14),
+                              constraints: BoxConstraints(
+                                maxWidth: FontList.font4,
+                                maxHeight: FontList.font4,
+                              ),
+                              child: SvgPicture.asset(
+                                widget.obscureText
+                                    ? (state.obscureText
+                                        ? 'assets/image/ic_visible_password.svg'
+                                        : widget.rightIconPath.toString())
+                                    : widget.rightIconPath.toString(),
+                                colorFilter: ColorFilter.mode(ColorList.generalWhite100AppFonts, BlendMode.srcIn),
+                                fit: BoxFit.contain,
+                              ),
                             ),
                           )
                         : null,

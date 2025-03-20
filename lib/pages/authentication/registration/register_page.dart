@@ -108,6 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   hasRightIcon: true,
                                   rightIconPath:
                                       'assets/image/ic_hide_password.svg',
+                                  obscureText: true,
                                   onChanged: (value) {},
                                 ),
                                 CustomTextField(
@@ -121,6 +122,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                   hasRightIcon: true,
                                   rightIconPath:
                                       'assets/image/ic_hide_password.svg',
+                                  obscureText: true,
                                   onChanged: (value) {},
                                 ),
                                 Gap(FontList.font16),

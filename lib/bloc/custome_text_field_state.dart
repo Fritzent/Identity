@@ -10,6 +10,7 @@ class CustomeTextFieldState {
   final TextEditingController? controller;
   final int countInit;
   final BuildContext? context;
+  final bool obscureText;
 
 
   CustomeTextFieldState({
@@ -22,6 +23,7 @@ class CustomeTextFieldState {
     this.countInit = 0,
     this.context,
     this.formSection = '',
+    this.obscureText = true,
   }) : controller = controller ?? TextEditingController(
     text: ''),
     focusNode = focusNode ?? FocusNode();
@@ -36,6 +38,7 @@ class CustomeTextFieldState {
     int? countInit,
     BuildContext? context,
     String? formSection,
+    bool? obscureText,
   }) {
     return CustomeTextFieldState(
       isFocused: isFocused ?? this.isFocused,
@@ -47,6 +50,7 @@ class CustomeTextFieldState {
       countInit : countInit ?? this.countInit,
       context: context ?? this.context,
       formSection: formSection ?? this.formSection,
+      obscureText: obscureText ?? this.obscureText,
     );
   }
 }

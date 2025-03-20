@@ -22,3 +22,8 @@ class OnUpdateField extends CustomeTextFieldEvent {
   final String value;
   OnUpdateField (this.value);
 }
+
+class OnChangeObscureText extends CustomeTextFieldEvent {
+  final bool obscureText;
+  OnChangeObscureText(this.obscureText);
+}
