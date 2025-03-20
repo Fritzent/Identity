@@ -1,4 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:hive_flutter/hive_flutter.dart';
+import 'package:identity/bloc/language_data_bloc.dart';
+import 'package:identity/database/themes.dart';
 import 'package:identity/l10n/app_localizations.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +17,9 @@ import 'package:identity/l10n/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Hive.initFlutter();
+  Hive.registerAdapter(ThemesAdapter());
+  await Hive.openBox('themesBox');
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
@@ -26,8 +32,15 @@ void main() async {
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((value) {
-    runApp(BlocProvider(
-      create: (context) => ThemeDataBloc()..add(AutoThemeEvent()),
+    runApp(MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => ThemeDataBloc()..add(AutoThemeEvent()),
+        ),
+        BlocProvider(
+          create: (context) => LanguageDataBloc(),
+        ),
+      ],
       child: const MainApp(),
     ));
   });
@@ -65,21 +78,25 @@ class _MainAppState extends State<MainApp> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ThemeDataBloc, ThemeDataState>(
-      builder: (context, state) {
-        return MaterialApp.router(
-          debugShowCheckedModeBanner: false,
-          routerConfig: MyAppRouter.router,
-          themeMode: kIsWeb ? ThemeMode.dark : state.themeMode,
-          theme: AppTheme.lightMode,
-          darkTheme: AppTheme.darkMode,
-          supportedLocales: L10n.all,
-          locale: const Locale('en'),
-          localizationsDelegates: const [
-            AppLocalizations.delegate,
-            GlobalMaterialLocalizations.delegate,
-            GlobalWidgetsLocalizations.delegate,
-            GlobalCupertinoLocalizations.delegate,
-          ],
+      builder: (context, stateTheme) {
+        return BlocBuilder<LanguageDataBloc, LanguageDataState>(
+          builder: (context, state) {
+            return MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              routerConfig: MyAppRouter.router,
+              themeMode: kIsWeb ? ThemeMode.dark : stateTheme.themeMode,
+              theme: AppTheme.lightMode,
+              darkTheme: AppTheme.darkMode,
+              supportedLocales: L10n.all,
+              locale: state.locale,
+              localizationsDelegates: const [
+                AppLocalizations.delegate,
+                GlobalMaterialLocalizations.delegate,
+                GlobalWidgetsLocalizations.delegate,
+                GlobalCupertinoLocalizations.delegate,
+              ],
+            );
+          },
         );
       },
     );
