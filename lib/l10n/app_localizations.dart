@@ -232,6 +232,60 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Column {field} cannot be empty'**
   String textFieldErrorEmptyMessage(Object field);
+
+  /// No description provided for @registerDataChooseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'What personal data you wish to share with us?'**
+  String get registerDataChooseTitle;
+
+  /// No description provided for @registerDataChooseSubTitile.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose at least one to help us prepare you side'**
+  String get registerDataChooseSubTitile;
+
+  /// No description provided for @bioText.
+  ///
+  /// In en, this message translates to:
+  /// **'Bio'**
+  String get bioText;
+
+  /// No description provided for @cvText.
+  ///
+  /// In en, this message translates to:
+  /// **'CV'**
+  String get cvText;
+
+  /// No description provided for @linkedIn.
+  ///
+  /// In en, this message translates to:
+  /// **'LinkedIn'**
+  String get linkedIn;
+
+  /// No description provided for @instagram.
+  ///
+  /// In en, this message translates to:
+  /// **'Instagram'**
+  String get instagram;
+
+  /// No description provided for @website.
+  ///
+  /// In en, this message translates to:
+  /// **'Website'**
+  String get website;
+
+  /// No description provided for @project.
+  ///
+  /// In en, this message translates to:
+  /// **'Project'**
+  String get project;
+
+  /// No description provided for @continueText.
+  ///
+  /// In en, this message translates to:
+  /// **'Continue'**
+  String get continueText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

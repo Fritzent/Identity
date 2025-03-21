@@ -45,5 +45,23 @@
 
   "signUpSubTitle" : "Pertama mari kita buat akun Anda!",
 
-  "textFieldErrorEmptyMessage" : "Kolom {field} tidak boleh kosong"
+  "textFieldErrorEmptyMessage" : "Kolom {field} tidak boleh kosong",
+
+  "registerDataChooseTitle" : "Data pribadi apa yang ingin anda bagikan kepada kami?",
+
+  "registerDataChooseSubTitile" : "Pilih setidaknya satu untuk membantu kami mempersiapkan sisi anda",
+
+  "bioText" : "Bio",
+
+  "cvText" : "CV",
+
+  "linkedIn" : "LinkedIn",
+
+  "instagram" : "Instagram",
+
+  "website" : "Website",
+
+  "project" : "Project",
+
+  "continueText" : "Selanjutnya"
 }

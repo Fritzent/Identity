@@ -1,4 +1,5 @@
 class FontList {
+  static const double font3 = 3.0;
   static const double font4 = 4.0;
   static const double font6 = 6.0;
   static const double font7 = 7.0;
@@ -10,8 +11,10 @@ class FontList {
   static const double font16 = 16.0;
   static const double font18 = 18.0;
   static const double font20 = 20.0;
+  static const double font22 = 22.0;
   static const double font24 = 24.0;
   static const double font32 = 32.0;
+  static const double font34 = 34.0;
   static const double font38 = 38.0;
   static const double font40 = 40.0;
   static const double font48 = 48.0;

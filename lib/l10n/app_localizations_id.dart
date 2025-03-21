@@ -78,4 +78,31 @@ class AppLocalizationsId extends AppLocalizations {
   String textFieldErrorEmptyMessage(Object field) {
     return 'Kolom $field tidak boleh kosong';
   }
+
+  @override
+  String get registerDataChooseTitle => 'Data pribadi apa yang ingin anda bagikan kepada kami?';
+
+  @override
+  String get registerDataChooseSubTitile => 'Pilih setidaknya satu untuk membantu kami mempersiapkan sisi anda';
+
+  @override
+  String get bioText => 'Bio';
+
+  @override
+  String get cvText => 'CV';
+
+  @override
+  String get linkedIn => 'LinkedIn';
+
+  @override
+  String get instagram => 'Instagram';
+
+  @override
+  String get website => 'Website';
+
+  @override
+  String get project => 'Project';
+
+  @override
+  String get continueText => 'Selanjutnya';
 }

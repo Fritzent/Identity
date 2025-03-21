@@ -10,7 +10,7 @@ class AppTheme {
     brightness: Brightness.light,
     useMaterial3: true,
     scaffoldBackgroundColor: ColorList.lightModeBackground,
-    primaryColorLight: ColorList.lightModeBackground,
+    primaryColorDark: ColorList.darkModeAppFonts,
     primaryColor: ColorList.lightModeAppFonts,
     textTheme: CustomTextTheme.lightTextThemeMode,
     inputDecorationTheme: CustomTextFieldTheme.lightTextFieldThemeMode,

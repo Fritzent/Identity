@@ -45,5 +45,23 @@
 
   "signUpSubTitle" : "First let’s create your account!",
 
-  "textFieldErrorEmptyMessage" : "Column {field} cannot be empty"
+  "textFieldErrorEmptyMessage" : "Column {field} cannot be empty",
+
+  "registerDataChooseTitle" : "What personal data you wish to share with us?",
+
+  "registerDataChooseSubTitile" : "Choose at least one to help us prepare you side",
+
+  "bioText" : "Bio",
+
+  "cvText" : "CV",
+
+  "linkedIn" : "LinkedIn",
+
+  "instagram" : "Instagram",
+
+  "website" : "Website",
+
+  "project" : "Project",
+
+  "continueText" : "Continue"
 }

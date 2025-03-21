@@ -78,4 +78,31 @@ class AppLocalizationsEn extends AppLocalizations {
   String textFieldErrorEmptyMessage(Object field) {
     return 'Column $field cannot be empty';
   }
+
+  @override
+  String get registerDataChooseTitle => 'What personal data you wish to share with us?';
+
+  @override
+  String get registerDataChooseSubTitile => 'Choose at least one to help us prepare you side';
+
+  @override
+  String get bioText => 'Bio';
+
+  @override
+  String get cvText => 'CV';
+
+  @override
+  String get linkedIn => 'LinkedIn';
+
+  @override
+  String get instagram => 'Instagram';
+
+  @override
+  String get website => 'Website';
+
+  @override
+  String get project => 'Project';
+
+  @override
+  String get continueText => 'Continue';
 }

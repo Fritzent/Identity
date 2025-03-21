@@ -31,7 +31,6 @@ class _RegisterPageState extends State<RegisterPage> {
                 : MediaQuery.of(context).size.width,
           ),
           child: LayoutBuilder(builder: (context, constraints) {
-
             Widget content = Padding(
               padding: EdgeInsets.symmetric(
                 horizontal: FontList.font24,
@@ -131,7 +130,12 @@ class _RegisterPageState extends State<RegisterPage> {
                                       horizontal: FontList.font24),
                                   child: GestureDetector(
                                       onTap: () {
-                                        print('Hello Button SignUp');
+                                        if (mounted) {
+                                          GoRouter.of(context)
+                                              .pushReplacementNamed(
+                                                  IdentityRouteConstant
+                                                      .registerDataChoose);
+                                        }
                                       },
                                       child: CustomButton(
                                           textButton:
