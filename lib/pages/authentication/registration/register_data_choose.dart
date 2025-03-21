@@ -78,7 +78,7 @@ class _RegisterDataChooseState extends State<RegisterDataChoose> {
                               top: 53
                             ),
                             shrinkWrap: true,
-                            physics: NeverScrollableScrollPhysics(),
+                            physics: kIsWeb ? AlwaysScrollableScrollPhysics(): NeverScrollableScrollPhysics(),
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,
