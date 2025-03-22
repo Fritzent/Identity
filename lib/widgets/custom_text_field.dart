@@ -1,5 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:identity/bloc/custome_text_field_bloc.dart';
@@ -20,6 +21,7 @@ class CustomTextField extends StatefulWidget {
   final bool hasLeftIcon;
   final String? leftIconPath;
   final bool obscureText;
+  final TextInputFormatter? inputFormatter;
 
   const CustomTextField(
       {super.key,
@@ -35,7 +37,8 @@ class CustomTextField extends StatefulWidget {
       this.rightIconPath,
       this.hasLeftIcon = false,
       this.leftIconPath,
-      this.obscureText = false});
+      this.obscureText = false,
+      this.inputFormatter});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -97,6 +100,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
               },
               child: TextFormField(
                   keyboardType: widget.keypadType,
+                  inputFormatters: widget.inputFormatter != null ? [widget.inputFormatter!] : [],
                   focusNode: state.focusNode,
                   controller: state.controller,
                   onChanged: widget.onChanged,

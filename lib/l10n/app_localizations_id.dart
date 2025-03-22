@@ -105,4 +105,40 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get continueText => 'Selanjutnya';
+
+  @override
+  String get biographyText => 'Biografi';
+
+  @override
+  String get biographySubTitle => 'Bantu kami untuk mengetahui lebih banyak tentang diri Anda.';
+
+  @override
+  String get professionalTitle => 'Nama profesional';
+
+  @override
+  String get professionalFieldHint => 'Masukkan nama lengkap Anda';
+
+  @override
+  String get tellUsAboutTitle => 'Beritahu kami tentang Anda';
+
+  @override
+  String get tellUsAboutFieldHint => 'Jelaskan tentang diri Anda';
+
+  @override
+  String get dateOfBirthTitle => 'Tanggal lahir';
+
+  @override
+  String get dateOfBirthFieldHint => 'Pilih tanggal ulang tahun Anda';
+
+  @override
+  String get currentLastJobTitle => 'Posisi pekerjaan saat ini / terakhir';
+
+  @override
+  String get currentLastJobFieldHint => 'Masukkan posisi pekerjaan Anda';
+
+  @override
+  String get lengthOfWorkExperienceTitle => 'Lama Pengalaman Kerja';
+
+  @override
+  String get lengthOfWorkExperienceFieldHint => 'Masukkan pengalaman Anda dalam satu tahun';
 }

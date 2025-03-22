@@ -1,9 +1,11 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:identity/data/section_data_items.dart';
 import 'package:identity/l10n/app_localizations.dart';
 import 'package:identity/resources/font_config.dart';
+import 'package:identity/routes/app_route_constants.dart';
 import 'package:identity/widgets/custom_button.dart';
 import 'package:identity/widgets/custom_button_choosen.dart';
 
@@ -37,9 +39,7 @@ class _RegisterDataChooseState extends State<RegisterDataChoose> {
               child: Column(
                 children: [
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: FontList.font24
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: FontList.font24),
                     child: Align(
                       alignment: Alignment.center,
                       child: Column(
@@ -48,11 +48,14 @@ class _RegisterDataChooseState extends State<RegisterDataChoose> {
                         children: [
                           Text(
                             textAlign: TextAlign.center,
-                            AppLocalizations.of(context)!.registerDataChooseTitle,
-                            style:
-                                Theme.of(context).textTheme.titleLarge?.copyWith(
-                                      fontSize: FontList.font24,
-                                    ),
+                            AppLocalizations.of(context)!
+                                .registerDataChooseTitle,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                  fontSize: FontList.font24,
+                                ),
                           ),
                           Gap(FontList.font24),
                           Text(
@@ -70,40 +73,44 @@ class _RegisterDataChooseState extends State<RegisterDataChoose> {
                   ),
                   Expanded(
                       flex: 2,
-                      child:  Center(
+                      child: Center(
                         child: Align(
                           alignment: Alignment.topCenter,
                           child: GridView.builder(
-                            padding: EdgeInsets.only(
-                              top: 53
-                            ),
+                            padding: EdgeInsets.only(top: 53),
                             shrinkWrap: true,
-                            physics: kIsWeb ? AlwaysScrollableScrollPhysics(): NeverScrollableScrollPhysics(),
+                            physics: kIsWeb
+                                ? AlwaysScrollableScrollPhysics()
+                                : NeverScrollableScrollPhysics(),
                             gridDelegate:
                                 SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 3,
                               crossAxisSpacing: FontList.font24,
                               mainAxisSpacing: FontList.font22,
-                              childAspectRatio:
-                                  1.0,
+                              childAspectRatio: 1.0,
                             ),
                             itemCount: sectionItemData.length,
                             itemBuilder: (context, index) {
-                              return CustomButtonChoosen(textButton: sectionItemData[index].sectionName, iconPath: sectionItemData[index].iconPath);
+                              return CustomButtonChoosen(
+                                  textButton:
+                                      sectionItemData[index].sectionName,
+                                  iconPath: sectionItemData[index].iconPath);
                             },
                           ),
                         ),
                       )),
                   Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: FontList.font24
-                    ),
+                    padding: EdgeInsets.symmetric(horizontal: FontList.font24),
                     child: GestureDetector(
                       onTap: () {
-                        print('Continue click');
+                        if (mounted) {
+                          GoRouter.of(context).pushReplacementNamed(
+                              IdentityRouteConstant.bioFormName);
+                        }
                       },
                       child: CustomButton(
-                          textButton: AppLocalizations.of(context)!.continueText),
+                          textButton:
+                              AppLocalizations.of(context)!.continueText),
                     ),
                   ),
                 ],

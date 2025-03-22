@@ -286,6 +286,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Continue'**
   String get continueText;
+
+  /// No description provided for @biographyText.
+  ///
+  /// In en, this message translates to:
+  /// **'Biography'**
+  String get biographyText;
+
+  /// No description provided for @biographySubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Help us to know more about your self to prepare your biography side.'**
+  String get biographySubTitle;
+
+  /// No description provided for @professionalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Professional name'**
+  String get professionalTitle;
+
+  /// No description provided for @professionalFieldHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Input your complete name'**
+  String get professionalFieldHint;
+
+  /// No description provided for @tellUsAboutTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us about you'**
+  String get tellUsAboutTitle;
+
+  /// No description provided for @tellUsAboutFieldHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe about yourself'**
+  String get tellUsAboutFieldHint;
+
+  /// No description provided for @dateOfBirthTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Date of birth'**
+  String get dateOfBirthTitle;
+
+  /// No description provided for @dateOfBirthFieldHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Select your date birthday'**
+  String get dateOfBirthFieldHint;
+
+  /// No description provided for @currentLastJobTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Current / Last job position'**
+  String get currentLastJobTitle;
+
+  /// No description provided for @currentLastJobFieldHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Input your job position'**
+  String get currentLastJobFieldHint;
+
+  /// No description provided for @lengthOfWorkExperienceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Length of Work Experience'**
+  String get lengthOfWorkExperienceTitle;
+
+  /// No description provided for @lengthOfWorkExperienceFieldHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Input your experience in a year'**
+  String get lengthOfWorkExperienceFieldHint;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

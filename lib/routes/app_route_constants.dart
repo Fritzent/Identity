@@ -5,4 +5,5 @@ class IdentityRouteConstant {
   static const String registerRouteName = 'register_page';
   static const String errorRouteName = 'error_page';
   static const String registerDataChoose = 'register_data_choose_page';
+  static const String bioFormName = 'bio_form_page';
 }

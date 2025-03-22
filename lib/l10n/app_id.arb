@@ -63,5 +63,29 @@
 
   "project" : "Project",
 
-  "continueText" : "Selanjutnya"
+  "continueText" : "Selanjutnya",
+
+  "biographyText" : "Biografi",
+
+  "biographySubTitle" : "Bantu kami untuk mengetahui lebih banyak tentang diri Anda.",
+
+  "professionalTitle" : "Nama profesional",
+
+  "professionalFieldHint" : "Masukkan nama lengkap Anda",
+
+  "tellUsAboutTitle" : "Beritahu kami tentang Anda",
+
+  "tellUsAboutFieldHint" : "Jelaskan tentang diri Anda",
+
+  "dateOfBirthTitle" : "Tanggal lahir",
+
+  "dateOfBirthFieldHint" : "Pilih tanggal ulang tahun Anda",
+
+  "currentLastJobTitle" : "Posisi pekerjaan saat ini / terakhir",
+
+  "currentLastJobFieldHint" : "Masukkan posisi pekerjaan Anda",
+
+  "lengthOfWorkExperienceTitle" : "Lama Pengalaman Kerja",
+
+  "lengthOfWorkExperienceFieldHint" : "Masukkan pengalaman Anda dalam satu tahun"
 }

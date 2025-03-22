@@ -63,5 +63,30 @@
 
   "project" : "Project",
 
-  "continueText" : "Continue"
+  "continueText" : "Continue",
+
+  "biographyText" : "Biography",
+
+  "biographySubTitle" : "Help us to know more about your self to prepare your biography side.",
+
+  "professionalTitle" : "Professional name",
+
+  "professionalFieldHint" : "Input your complete name",
+
+  "tellUsAboutTitle" : "Tell us about you",
+
+  "tellUsAboutFieldHint" : "Describe about yourself",
+
+  "dateOfBirthTitle" : "Date of birth",
+
+  "dateOfBirthFieldHint" : "Select your date birthday",
+
+  "currentLastJobTitle" : "Current / Last job position",
+
+  "currentLastJobFieldHint" : "Input your job position",
+
+  "lengthOfWorkExperienceTitle" : "Length of Work Experience",
+
+  "lengthOfWorkExperienceFieldHint" : "Input your experience in a year"
+
 }

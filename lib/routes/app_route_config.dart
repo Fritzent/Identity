@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:identity/pages/authentication/login/login_page.dart';
+import 'package:identity/pages/authentication/registration/preparation/bio_form.dart';
 import 'package:identity/pages/authentication/registration/register_data_choose.dart';
 import 'package:identity/pages/authentication/registration/register_page.dart';
 import 'package:identity/pages/splash_page.dart';
@@ -42,6 +43,13 @@ class MyAppRouter {
           name: IdentityRouteConstant.registerDataChoose,
           pageBuilder: (context, state) {
             return MaterialPage(child: RegisterDataChoose());
+          },
+        ),
+        GoRoute(
+          path: '/bio_form_page',
+          name: IdentityRouteConstant.bioFormName,
+          pageBuilder: (context, state) {
+            return MaterialPage(child: BioForm());
           },
         )
 

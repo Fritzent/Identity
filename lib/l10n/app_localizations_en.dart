@@ -105,4 +105,40 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get continueText => 'Continue';
+
+  @override
+  String get biographyText => 'Biography';
+
+  @override
+  String get biographySubTitle => 'Help us to know more about your self to prepare your biography side.';
+
+  @override
+  String get professionalTitle => 'Professional name';
+
+  @override
+  String get professionalFieldHint => 'Input your complete name';
+
+  @override
+  String get tellUsAboutTitle => 'Tell us about you';
+
+  @override
+  String get tellUsAboutFieldHint => 'Describe about yourself';
+
+  @override
+  String get dateOfBirthTitle => 'Date of birth';
+
+  @override
+  String get dateOfBirthFieldHint => 'Select your date birthday';
+
+  @override
+  String get currentLastJobTitle => 'Current / Last job position';
+
+  @override
+  String get currentLastJobFieldHint => 'Input your job position';
+
+  @override
+  String get lengthOfWorkExperienceTitle => 'Length of Work Experience';
+
+  @override
+  String get lengthOfWorkExperienceFieldHint => 'Input your experience in a year';
 }
