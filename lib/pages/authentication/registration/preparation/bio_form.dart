@@ -2,12 +2,9 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:identity/l10n/app_localizations.dart';
 import 'package:identity/resources/colors.dart';
 import 'package:identity/resources/font_config.dart';
-import 'package:identity/routes/app_route_constants.dart';
-import 'package:identity/widgets/custom_border_button.dart';
 import 'package:identity/widgets/custom_button.dart';
 import 'package:identity/widgets/custom_text_field.dart';
 
@@ -137,6 +134,7 @@ class _BioFormState extends State<BioForm> {
                                   keypadType: TextInputType.text,
                                   formSection: AppLocalizations.of(context)!
                                       .dateOfBirthTitle,
+                                  isDateSection : true,
                                   onChanged: (value) {},
                                 ),
                                 CustomTextField(

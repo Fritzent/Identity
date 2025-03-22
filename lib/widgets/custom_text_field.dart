@@ -4,8 +4,10 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:identity/bloc/custome_text_field_bloc.dart';
+import 'package:identity/l10n/app_localizations.dart';
 import 'package:identity/resources/colors.dart';
 import 'package:identity/resources/font_config.dart';
+import 'package:intl/intl.dart';
 
 class CustomTextField extends StatefulWidget {
   final String textFieldLabel;
@@ -22,6 +24,7 @@ class CustomTextField extends StatefulWidget {
   final String? leftIconPath;
   final bool obscureText;
   final TextInputFormatter? inputFormatter;
+  final bool isDateSection;
 
   const CustomTextField(
       {super.key,
@@ -38,7 +41,8 @@ class CustomTextField extends StatefulWidget {
       this.hasLeftIcon = false,
       this.leftIconPath,
       this.obscureText = false,
-      this.inputFormatter});
+      this.inputFormatter,
+      this.isDateSection = false});
 
   @override
   State<CustomTextField> createState() => _CustomTextFieldState();
@@ -94,54 +98,217 @@ class _CustomTextFieldState extends State<CustomTextField> {
               style: Theme.of(context).textTheme.bodyLarge?.copyWith(
                   fontSize: FontList.font16, fontWeight: FontWeight.bold),
             ),
-            GestureDetector(
-              onTap: () {
-                state.focusNode!.requestFocus();
-              },
-              child: TextFormField(
-                  keyboardType: widget.keypadType,
-                  inputFormatters: widget.inputFormatter != null ? [widget.inputFormatter!] : [],
-                  focusNode: state.focusNode,
-                  controller: state.controller,
-                  onChanged: widget.onChanged,
-                  validator: widget.validator,
-                  obscureText: widget.obscureText == true
-                      ? state.obscureText
-                      : widget.obscureText,
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontSize: FontList.font16,
-                        fontWeight: FontWeight.normal,
+            if (widget.isDateSection)
+              GestureDetector(
+                onTap: () async {
+                  if (widget.isDateSection) {
+                    DateTime? pickedDate = await showDatePicker(
+                      context: context,
+                      initialDate: DateTime.now(),
+                      firstDate: DateTime(2000),
+                      lastDate: DateTime(2100),
+                      helpText: widget.textFieldHint,
+                      cancelText: AppLocalizations.of(context)!.closeText,
+                      confirmText: AppLocalizations.of(context)!.chooseText,
+                      fieldLabelText: widget.textFieldLabel,
+                      builder: (BuildContext context, Widget? child) {
+                        return Theme(
+                          data: ThemeData.light().copyWith(
+                            colorScheme: ColorScheme.light(
+                              primary: ColorList.lightModeAppFonts,
+                            ),
+                            datePickerTheme: DatePickerThemeData(
+                              backgroundColor: ColorList.lightModeBackground,
+                              todayBackgroundColor: WidgetStatePropertyAll(
+                                  ColorList.darkModeAppFonts),
+                              todayForegroundColor: WidgetStatePropertyAll(
+                                  ColorList.lightModeAppFonts),
+                              dividerColor: ColorList.generalWhite100AppFonts,
+                              headerBackgroundColor:
+                                  Theme.of(context).scaffoldBackgroundColor,
+                              headerForegroundColor:
+                                  Theme.of(context).primaryColor,
+                              confirmButtonStyle: ButtonStyle(
+                                foregroundColor: WidgetStatePropertyAll(
+                                    ColorList.generalBlueAppFonts),
+                              ),
+                              cancelButtonStyle: ButtonStyle(
+                                foregroundColor: WidgetStatePropertyAll(
+                                    ColorList.generalGray100AppFonts),
+                              ),
+                              yearBackgroundColor: WidgetStatePropertyAll(
+                                  ColorList.darkModeAppFonts),
+                              yearForegroundColor: WidgetStatePropertyAll(
+                                  ColorList.lightModeAppFonts),
+                            ),
+                          ),
+                          child: child!,
+                        );
+                      },
+                    );
+
+                    if (pickedDate != null) {
+                      String formattedDate =
+                          DateFormat("yyyy-MM-dd").format(pickedDate);
+                      if (widget.onChanged != null) {
+                        state.controller?.text = formattedDate;
+                        widget.onChanged!(formattedDate);
+                      }
+                    }
+                  }
+                },
+                child: AbsorbPointer(
+                  child: TextFormField(
+                      keyboardType: widget.keypadType,
+                      inputFormatters: widget.inputFormatter != null
+                          ? [widget.inputFormatter!]
+                          : [],
+                      focusNode: state.focusNode,
+                      controller: state.controller,
+                      onChanged: widget.onChanged,
+                      validator: widget.validator,
+                      obscureText: widget.obscureText == true
+                          ? state.obscureText
+                          : widget.obscureText,
+                      style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                            fontSize: FontList.font16,
+                            fontWeight: FontWeight.normal,
+                          ),
+                      decoration: InputDecoration(
+                        contentPadding: EdgeInsets.only(
+                          top: FontList.font7,
+                          bottom: FontList.font7,
+                          left: FontList.font24,
+                          right: FontList.font12,
+                        ),
+                        prefixIcon: widget.hasLeftIcon
+                            ? Container(
+                                padding: EdgeInsets.all(
+                                    kIsWeb ? FontList.font10 : FontList.font14),
+                                constraints: BoxConstraints(
+                                  maxWidth: FontList.font4,
+                                  maxHeight: FontList.font4,
+                                ),
+                                child: SvgPicture.asset(
+                                  widget.leftIconPath.toString(),
+                                  fit: BoxFit.contain,
+                                ),
+                              )
+                            : null,
+                        suffixIcon: widget.hasRightIcon
+                            ? GestureDetector(
+                                onTap: () {
+                                  bool currentObscureTextState =
+                                      state.obscureText;
+                                  context.read<CustomeTextFieldBloc>().add(
+                                      OnChangeObscureText(
+                                          !currentObscureTextState));
+                                },
+                                child: Container(
+                                  padding: EdgeInsets.all(kIsWeb
+                                      ? FontList.font10
+                                      : FontList.font14),
+                                  constraints: BoxConstraints(
+                                    maxWidth: FontList.font4,
+                                    maxHeight: FontList.font4,
+                                  ),
+                                  child: SvgPicture.asset(
+                                    widget.obscureText
+                                        ? (state.obscureText
+                                            ? 'assets/image/ic_visible_password.svg'
+                                            : widget.rightIconPath.toString())
+                                        : widget.rightIconPath.toString(),
+                                    colorFilter: ColorFilter.mode(
+                                        ColorList.generalWhite100AppFonts,
+                                        BlendMode.srcIn),
+                                    fit: BoxFit.contain,
+                                  ),
+                                ),
+                              )
+                            : null,
+                        hintText: widget.textFieldHint,
+                        hintStyle: Theme.of(context)
+                            .textTheme
+                            .titleLarge
+                            ?.copyWith(
+                                fontSize: FontList.font16,
+                                fontWeight: FontWeight.normal,
+                                color: ColorList.generalWhite100AppFonts),
+                        errorStyle: Theme.of(context)
+                            .textTheme
+                            .titleLarge
+                            ?.copyWith(
+                                fontSize: FontList.font16,
+                                fontWeight: FontWeight.normal,
+                                color: ColorList.redColor),
+                        filled: true,
+                        fillColor: Colors.transparent,
+                        enabledBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(FontList.font8),
+                          borderSide: BorderSide(
+                            color: state.isFocused
+                                ? ColorList.greenColor
+                                : ColorList.generalWhite100AppFonts,
+                            width: 1.0,
+                          ),
+                        ),
+                        focusedBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(FontList.font8),
+                          borderSide: BorderSide(
+                            color: ColorList.greenColor,
+                            width: 1.0,
+                          ),
+                        ),
+                        errorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(FontList.font8),
+                          borderSide: BorderSide(
+                            color: ColorList.redColor,
+                            width: 1.0,
+                          ),
+                        ),
+                        focusedErrorBorder: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(FontList.font8),
+                          borderSide: BorderSide(
+                            color: ColorList.redColor,
+                            width: 1.0,
+                          ),
+                        ),
+                        errorText: state.errorMessage.isNotEmpty
+                            ? state.errorMessage
+                            : null,
+                      )),
+                ),
+              ),
+            if (!widget.isDateSection)
+              GestureDetector(
+                onTap: () {
+                  state.focusNode!.requestFocus();
+                },
+                child: TextFormField(
+                    keyboardType: widget.keypadType,
+                    inputFormatters: widget.inputFormatter != null
+                        ? [widget.inputFormatter!]
+                        : [],
+                    focusNode: state.focusNode,
+                    controller: state.controller,
+                    onChanged: widget.onChanged,
+                    validator: widget.validator,
+                    obscureText: widget.obscureText == true
+                        ? state.obscureText
+                        : widget.obscureText,
+                    style: Theme.of(context).textTheme.titleLarge?.copyWith(
+                          fontSize: FontList.font16,
+                          fontWeight: FontWeight.normal,
+                        ),
+                    decoration: InputDecoration(
+                      contentPadding: EdgeInsets.only(
+                        top: FontList.font7,
+                        bottom: FontList.font7,
+                        left: FontList.font24,
+                        right: FontList.font12,
                       ),
-                  decoration: InputDecoration(
-                    contentPadding: EdgeInsets.only(
-                      top: FontList.font7,
-                      bottom: FontList.font7,
-                      left: FontList.font24,
-                      right: FontList.font12,
-                    ),
-                    prefixIcon: widget.hasLeftIcon
-                        ? Container(
-                            padding: EdgeInsets.all(
-                                kIsWeb ? FontList.font10 : FontList.font14),
-                            constraints: BoxConstraints(
-                              maxWidth: FontList.font4,
-                              maxHeight: FontList.font4,
-                            ),
-                            child: SvgPicture.asset(
-                              widget.leftIconPath.toString(),
-                              fit: BoxFit.contain,
-                            ),
-                          )
-                        : null,
-                    suffixIcon: widget.hasRightIcon
-                        ? GestureDetector(
-                            onTap: () {
-                              bool currentObscureTextState = state.obscureText;
-                              context.read<CustomeTextFieldBloc>().add(
-                                  OnChangeObscureText(
-                                      !currentObscureTextState));
-                            },
-                            child: Container(
+                      prefixIcon: widget.hasLeftIcon
+                          ? Container(
                               padding: EdgeInsets.all(
                                   kIsWeb ? FontList.font10 : FontList.font14),
                               constraints: BoxConstraints(
@@ -149,66 +316,93 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                 maxHeight: FontList.font4,
                               ),
                               child: SvgPicture.asset(
-                                widget.obscureText
-                                    ? (state.obscureText
-                                        ? 'assets/image/ic_visible_password.svg'
-                                        : widget.rightIconPath.toString())
-                                    : widget.rightIconPath.toString(),
-                                colorFilter: ColorFilter.mode(ColorList.generalWhite100AppFonts, BlendMode.srcIn),
+                                widget.leftIconPath.toString(),
                                 fit: BoxFit.contain,
                               ),
-                            ),
-                          )
-                        : null,
-                    hintText: widget.textFieldHint,
-                    hintStyle: Theme.of(context).textTheme.titleLarge?.copyWith(
-                        fontSize: FontList.font16,
-                        fontWeight: FontWeight.normal,
-                        color: ColorList.generalWhite100AppFonts),
-                    errorStyle: Theme.of(context)
-                        .textTheme
-                        .titleLarge
-                        ?.copyWith(
-                            fontSize: FontList.font16,
-                            fontWeight: FontWeight.normal,
-                            color: ColorList.redColor),
-                    filled: true,
-                    fillColor: Colors.transparent,
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(FontList.font8),
-                      borderSide: BorderSide(
-                        color: state.isFocused
-                            ? ColorList.greenColor
-                            : ColorList.generalWhite100AppFonts,
-                        width: 1.0,
+                            )
+                          : null,
+                      suffixIcon: widget.hasRightIcon
+                          ? GestureDetector(
+                              onTap: () {
+                                bool currentObscureTextState =
+                                    state.obscureText;
+                                context.read<CustomeTextFieldBloc>().add(
+                                    OnChangeObscureText(
+                                        !currentObscureTextState));
+                              },
+                              child: Container(
+                                padding: EdgeInsets.all(
+                                    kIsWeb ? FontList.font10 : FontList.font14),
+                                constraints: BoxConstraints(
+                                  maxWidth: FontList.font4,
+                                  maxHeight: FontList.font4,
+                                ),
+                                child: SvgPicture.asset(
+                                  widget.obscureText
+                                      ? (state.obscureText
+                                          ? 'assets/image/ic_visible_password.svg'
+                                          : widget.rightIconPath.toString())
+                                      : widget.rightIconPath.toString(),
+                                  colorFilter: ColorFilter.mode(
+                                      ColorList.generalWhite100AppFonts,
+                                      BlendMode.srcIn),
+                                  fit: BoxFit.contain,
+                                ),
+                              ),
+                            )
+                          : null,
+                      hintText: widget.textFieldHint,
+                      hintStyle: Theme.of(context)
+                          .textTheme
+                          .titleLarge
+                          ?.copyWith(
+                              fontSize: FontList.font16,
+                              fontWeight: FontWeight.normal,
+                              color: ColorList.generalWhite100AppFonts),
+                      errorStyle: Theme.of(context)
+                          .textTheme
+                          .titleLarge
+                          ?.copyWith(
+                              fontSize: FontList.font16,
+                              fontWeight: FontWeight.normal,
+                              color: ColorList.redColor),
+                      filled: true,
+                      fillColor: Colors.transparent,
+                      enabledBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(FontList.font8),
+                        borderSide: BorderSide(
+                          color: state.isFocused
+                              ? ColorList.greenColor
+                              : ColorList.generalWhite100AppFonts,
+                          width: 1.0,
+                        ),
                       ),
-                    ),
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(FontList.font8),
-                      borderSide: BorderSide(
-                        color: ColorList.greenColor,
-                        width: 1.0,
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(FontList.font8),
+                        borderSide: BorderSide(
+                          color: ColorList.greenColor,
+                          width: 1.0,
+                        ),
                       ),
-                    ),
-                    errorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(FontList.font8),
-                      borderSide: BorderSide(
-                        color: ColorList.redColor,
-                        width: 1.0,
+                      errorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(FontList.font8),
+                        borderSide: BorderSide(
+                          color: ColorList.redColor,
+                          width: 1.0,
+                        ),
                       ),
-                    ),
-                    focusedErrorBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(FontList.font8),
-                      borderSide: BorderSide(
-                        color: ColorList.redColor,
-                        width: 1.0,
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(FontList.font8),
+                        borderSide: BorderSide(
+                          color: ColorList.redColor,
+                          width: 1.0,
+                        ),
                       ),
-                    ),
-                    errorText: state.errorMessage.isNotEmpty
-                        ? state.errorMessage
-                        : null,
-                  )),
-            )
+                      errorText: state.errorMessage.isNotEmpty
+                          ? state.errorMessage
+                          : null,
+                    )),
+              )
           ],
         );
       }),

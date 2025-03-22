@@ -87,6 +87,10 @@
 
   "lengthOfWorkExperienceTitle" : "Length of Work Experience",
 
-  "lengthOfWorkExperienceFieldHint" : "Input your experience in a year"
+  "lengthOfWorkExperienceFieldHint" : "Input your experience in a year",
+
+  "closeText" : "Close",
+
+  "chooseText" : "Choose"
 
 }

@@ -141,4 +141,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get lengthOfWorkExperienceFieldHint => 'Masukkan pengalaman Anda dalam satu tahun';
+
+  @override
+  String get closeText => 'Tutup';
+
+  @override
+  String get chooseText => 'Pilih';
 }

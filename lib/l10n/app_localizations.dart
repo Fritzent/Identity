@@ -358,6 +358,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Input your experience in a year'**
   String get lengthOfWorkExperienceFieldHint;
+
+  /// No description provided for @closeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Close'**
+  String get closeText;
+
+  /// No description provided for @chooseText.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose'**
+  String get chooseText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
