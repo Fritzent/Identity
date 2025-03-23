@@ -2,9 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:identity/l10n/app_localizations.dart';
 import 'package:identity/resources/colors.dart';
 import 'package:identity/resources/font_config.dart';
+import 'package:identity/routes/app_route_constants.dart';
 import 'package:identity/widgets/custom_button.dart';
 import 'package:identity/widgets/custom_text_field.dart';
 
@@ -161,10 +163,10 @@ class _BioFormState extends State<BioForm> {
                                 Gap(FontList.font15),
                                 GestureDetector(
                                   onTap: () {
-                                    // if (mounted) {
-                                    //   GoRouter.of(context).pushReplacementNamed(
-                                    //       IdentityRouteConstant.bioFormName);
-                                    // }
+                                    if (mounted) {
+                                      GoRouter.of(context).pushReplacementNamed(
+                                          IdentityRouteConstant.cvFormName);
+                                    }
                                   },
                                   child: CustomButton(
                                       textButton: AppLocalizations.of(context)!

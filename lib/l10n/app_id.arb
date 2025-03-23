@@ -91,5 +91,11 @@
 
   "closeText" : "Tutup",
 
-  "chooseText" : "Pilih"
+  "chooseText" : "Pilih",
+
+  "cvText" : "Curriculum Vitae",
+
+  "cvSubTitle" : "Unggah CV terbaru Anda agar lebih banyak orang tertarik dengan latar belakang Anda.",
+
+  "importYourFilesText" : "Impor file Anda"
 }

@@ -254,7 +254,7 @@ abstract class AppLocalizations {
   /// No description provided for @cvText.
   ///
   /// In en, this message translates to:
-  /// **'CV'**
+  /// **'Curriculum Vitae'**
   String get cvText;
 
   /// No description provided for @linkedIn.
@@ -370,6 +370,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Choose'**
   String get chooseText;
+
+  /// No description provided for @cvSubTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Upload your latest CV to get more people interested in your background.'**
+  String get cvSubTitle;
+
+  /// No description provided for @importYourFilesText.
+  ///
+  /// In en, this message translates to:
+  /// **'Import your files'**
+  String get importYourFilesText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

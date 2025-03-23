@@ -91,6 +91,12 @@
 
   "closeText" : "Close",
 
-  "chooseText" : "Choose"
+  "chooseText" : "Choose",
+
+  "cvText" : "Curriculum Vitae",
+
+  "cvSubTitle" : "Upload your latest CV to get more people interested in your background.",
+
+  "importYourFilesText" : "Import your files"
 
 }

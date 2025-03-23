@@ -89,7 +89,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get bioText => 'Bio';
 
   @override
-  String get cvText => 'CV';
+  String get cvText => 'Curriculum Vitae';
 
   @override
   String get linkedIn => 'LinkedIn';
@@ -147,4 +147,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get chooseText => 'Pilih';
+
+  @override
+  String get cvSubTitle => 'Unggah CV terbaru Anda agar lebih banyak orang tertarik dengan latar belakang Anda.';
+
+  @override
+  String get importYourFilesText => 'Impor file Anda';
 }
