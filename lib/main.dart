@@ -90,7 +90,7 @@ class _MainAppState extends State<MainApp> {
             return MaterialApp.router(
               debugShowCheckedModeBanner: false,
               routerConfig: MyAppRouter.router,
-              themeMode: kIsWeb ? ThemeMode.dark : stateTheme.themeMode,
+              themeMode: kIsWeb ? ThemeMode.light : stateTheme.themeMode,
               theme: AppTheme.lightMode,
               darkTheme: AppTheme.darkMode,
               supportedLocales: L10n.all,
