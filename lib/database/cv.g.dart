@@ -1,32 +1,35 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'themes.dart';
+part of 'cv.dart';
 
 // **************************************************************************
 // TypeAdapterGenerator
 // **************************************************************************
 
-class ThemesAdapter extends TypeAdapter<Themes> {
+class CvPdfFileAdapter extends TypeAdapter<CvPdfFile> {
   @override
-  final int typeId = 0;
+  final int typeId = 2;
 
   @override
-  Themes read(BinaryReader reader) {
+  CvPdfFile read(BinaryReader reader) {
     final numOfFields = reader.readByte();
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return Themes(
-      themeMode: fields[0] as String,
+    return CvPdfFile(
+      fileName: fields[0] as String,
+      fileBytes: (fields[1] as List).cast<int>(),
     );
   }
 
   @override
-  void write(BinaryWriter writer, Themes obj) {
+  void write(BinaryWriter writer, CvPdfFile obj) {
     writer
-      ..writeByte(1)
+      ..writeByte(2)
       ..writeByte(0)
-      ..write(obj.themeMode);
+      ..write(obj.fileName)
+      ..writeByte(1)
+      ..write(obj.fileBytes);
   }
 
   @override
@@ -35,7 +38,7 @@ class ThemesAdapter extends TypeAdapter<Themes> {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      other is ThemesAdapter &&
+      other is CvPdfFileAdapter &&
           runtimeType == other.runtimeType &&
           typeId == other.typeId;
 }

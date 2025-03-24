@@ -2,7 +2,7 @@ import 'package:hive/hive.dart';
 
 part 'themes.g.dart';
 
-@HiveType(typeId: 1)
+@HiveType(typeId: 0)
 class Themes{
   Themes({required this.themeMode});
   

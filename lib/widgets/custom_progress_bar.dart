@@ -14,7 +14,7 @@ class CustomProgressBar extends StatefulWidget {
 class _CustomProgressBarState extends State<CustomProgressBar> {
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: double.infinity, // Ensures Row has a width
       child: Row(
         mainAxisAlignment: MainAxisAlignment.start,
