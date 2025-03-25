@@ -153,4 +153,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get importYourFilesText => 'Import your files';
+
+  @override
+  String get personalLinkTitle => 'Personal Link';
+
+  @override
+  String get personalLinkSubtitle => 'Share your personal link on social media, websites, or projects to attract people\'s interest.';
+
+  @override
+  String get linkedinHintText => 'Share your LinkedIn profile';
+
+  @override
+  String get instagramHintText => 'Share your Instagram profile';
+
+  @override
+  String get websiteHintText => 'Share your personal website';
+
+  @override
+  String get projectHintText => 'Share your personal project';
 }

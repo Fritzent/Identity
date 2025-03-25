@@ -3,10 +3,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 import 'package:identity/bloc/cv_upload_bloc.dart';
 import 'package:identity/l10n/app_localizations.dart';
 import 'package:identity/resources/colors.dart';
 import 'package:identity/resources/font_config.dart';
+import 'package:identity/routes/app_route_constants.dart';
 import 'package:identity/utils/dashed_border.dart';
 import 'package:identity/widgets/custom_button.dart';
 import 'package:identity/widgets/custom_progress_bar.dart';
@@ -292,10 +294,10 @@ class _CvFormState extends State<CvForm> {
                                       Gap(FontList.font15),
                                       GestureDetector(
                                         onTap: () {
-                                          // if (mounted) {
-                                          //   GoRouter.of(context).pushReplacementNamed(
-                                          //       IdentityRouteConstant.cvFormName);
-                                          // }
+                                          if (mounted) {
+                                            GoRouter.of(context).pushReplacementNamed(
+                                                IdentityRouteConstant.urlFormName);
+                                          }
                                         },
                                         child: CustomButton(
                                             textButton:

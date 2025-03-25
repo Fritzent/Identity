@@ -382,6 +382,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Import your files'**
   String get importYourFilesText;
+
+  /// No description provided for @personalLinkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Personal Link'**
+  String get personalLinkTitle;
+
+  /// No description provided for @personalLinkSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your personal link on social media, websites, or projects to attract people\'s interest.'**
+  String get personalLinkSubtitle;
+
+  /// No description provided for @linkedinHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your LinkedIn profile'**
+  String get linkedinHintText;
+
+  /// No description provided for @instagramHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your Instagram profile'**
+  String get instagramHintText;
+
+  /// No description provided for @websiteHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your personal website'**
+  String get websiteHintText;
+
+  /// No description provided for @projectHintText.
+  ///
+  /// In en, this message translates to:
+  /// **'Share your personal project'**
+  String get projectHintText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

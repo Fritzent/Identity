@@ -97,6 +97,18 @@
 
   "cvSubTitle" : "Upload your latest CV to get more people interested in your background.",
 
-  "importYourFilesText" : "Import your files"
+  "importYourFilesText" : "Import your files",
+
+  "personalLinkTitle" : "Personal Link",
+  
+  "personalLinkSubtitle" : "Share your personal link on social media, websites, or projects to attract people's interest.",
+
+  "linkedinHintText" : "Share your LinkedIn profile",
+
+  "instagramHintText" : "Share your Instagram profile",
+
+  "websiteHintText" : "Share your personal website",
+
+  "projectHintText" : "Share your personal project"
 
 }

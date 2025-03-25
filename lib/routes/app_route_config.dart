@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:identity/pages/authentication/login/login_page.dart';
 import 'package:identity/pages/authentication/registration/preparation/bio_form.dart';
 import 'package:identity/pages/authentication/registration/preparation/cv_form.dart';
+import 'package:identity/pages/authentication/registration/preparation/link_url_form.dart';
 import 'package:identity/pages/authentication/registration/register_data_choose.dart';
 import 'package:identity/pages/authentication/registration/register_page.dart';
 import 'package:identity/pages/splash_page.dart';
@@ -58,6 +59,13 @@ class MyAppRouter {
           name: IdentityRouteConstant.cvFormName,
           pageBuilder: (context, state) {
             return MaterialPage(child: CvForm());
+          },
+        ),
+        GoRoute(
+          path: '/url_form_page',
+          name: IdentityRouteConstant.urlFormName,
+          pageBuilder: (context, state) {
+            return MaterialPage(child: LinkUrlForm());
           },
         ),
 

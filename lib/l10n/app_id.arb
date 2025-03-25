@@ -97,5 +97,17 @@
 
   "cvSubTitle" : "Unggah CV terbaru Anda agar lebih banyak orang tertarik dengan latar belakang Anda.",
 
-  "importYourFilesText" : "Impor file Anda"
+  "importYourFilesText" : "Impor file Anda",
+
+  "personalLinkTitle" : "Tautan Pribadi",
+  
+  "personalLinkSubtitle" : "Bagikan tautan pribadi Anda di media sosial, situs web, atau proyek untuk menarik minat orang.",
+
+  "linkedinHintText" : "Bagikan profil LinkedIn Anda",
+
+  "instagramHintText" : "Bagikan profil Instagram Anda",
+
+  "websiteHintText" : "Bagikan situs web pribadi Anda",
+
+  "projectHintText" : "Bagikan situs project pribadi Anda"
 }

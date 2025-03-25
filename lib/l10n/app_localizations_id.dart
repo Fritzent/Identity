@@ -153,4 +153,22 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get importYourFilesText => 'Impor file Anda';
+
+  @override
+  String get personalLinkTitle => 'Tautan Pribadi';
+
+  @override
+  String get personalLinkSubtitle => 'Bagikan tautan pribadi Anda di media sosial, situs web, atau proyek untuk menarik minat orang.';
+
+  @override
+  String get linkedinHintText => 'Bagikan profil LinkedIn Anda';
+
+  @override
+  String get instagramHintText => 'Bagikan profil Instagram Anda';
+
+  @override
+  String get websiteHintText => 'Bagikan situs web pribadi Anda';
+
+  @override
+  String get projectHintText => 'Bagikan situs project pribadi Anda';
 }
