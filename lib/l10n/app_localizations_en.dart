@@ -171,4 +171,10 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get projectHintText => 'Share your personal project';
+
+  @override
+  String get registrationSuccessText => 'Registration Success';
+
+  @override
+  String get registrationSuccessSubtitle => 'It\'s time to attract people with your amazing profile.';
 }

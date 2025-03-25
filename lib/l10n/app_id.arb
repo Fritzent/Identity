@@ -109,5 +109,9 @@
 
   "websiteHintText" : "Bagikan situs web pribadi Anda",
 
-  "projectHintText" : "Bagikan situs project pribadi Anda"
+  "projectHintText" : "Bagikan situs project pribadi Anda",
+
+  "registrationSuccessText" : "Pendaftaran Berhasil",
+
+  "registrationSuccessSubtitle" : "Sekarang saatnya menarik orang dengan profil Anda yang menakjubkan."
 }

@@ -13,8 +13,6 @@ class SplashPage extends StatefulWidget {
 class _SplashPageState extends State<SplashPage> {
   late final RiveAnimationController controller;
 
-  bool isPlaying = false;
-
   @override
   void dispose() {
     if (controller.isActive) {

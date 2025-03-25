@@ -8,4 +8,5 @@ class IdentityRouteConstant {
   static const String bioFormName = 'bio_form_page';
   static const String cvFormName = 'cv_form_page';
   static const String urlFormName = 'url_form_page';
+  static const String registrationSuccessName = 'registration_success_page';
 }

@@ -171,4 +171,10 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get projectHintText => 'Bagikan situs project pribadi Anda';
+
+  @override
+  String get registrationSuccessText => 'Pendaftaran Berhasil';
+
+  @override
+  String get registrationSuccessSubtitle => 'Sekarang saatnya menarik orang dengan profil Anda yang menakjubkan.';
 }

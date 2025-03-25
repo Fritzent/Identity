@@ -152,7 +152,7 @@ class _LinkUrlFormState extends State<LinkUrlForm> {
                                   onTap: () {
                                     if (mounted) {
                                       GoRouter.of(context).pushReplacementNamed(
-                                          IdentityRouteConstant.cvFormName);
+                                          IdentityRouteConstant.registrationSuccessName);
                                     }
                                   },
                                   child: CustomButton(

@@ -109,6 +109,10 @@
 
   "websiteHintText" : "Share your personal website",
 
-  "projectHintText" : "Share your personal project"
+  "projectHintText" : "Share your personal project",
+
+  "registrationSuccessText" : "Registration Success",
+
+  "registrationSuccessSubtitle" : "It's time to attract people with your amazing profile."
 
 }

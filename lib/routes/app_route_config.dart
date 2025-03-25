@@ -6,6 +6,7 @@ import 'package:identity/pages/authentication/registration/preparation/cv_form.d
 import 'package:identity/pages/authentication/registration/preparation/link_url_form.dart';
 import 'package:identity/pages/authentication/registration/register_data_choose.dart';
 import 'package:identity/pages/authentication/registration/register_page.dart';
+import 'package:identity/pages/authentication/registration/register_success_page.dart';
 import 'package:identity/pages/splash_page.dart';
 import 'package:identity/pages/started_page.dart';
 import 'package:identity/routes/app_route_constants.dart';
@@ -66,6 +67,13 @@ class MyAppRouter {
           name: IdentityRouteConstant.urlFormName,
           pageBuilder: (context, state) {
             return MaterialPage(child: LinkUrlForm());
+          },
+        ),
+        GoRoute(
+          path: '/registration_success_page',
+          name: IdentityRouteConstant.registrationSuccessName,
+          pageBuilder: (context, state) {
+            return MaterialPage(child: RegisterSuccessPage());
           },
         ),
 

@@ -58,4 +58,5 @@ flutter:
     - assets/image/
     - assets/rive_motion/identity_dark_mode_splash.riv
     - assets/rive_motion/identity_light_mode_splash.riv
+    - assets/rive_motion/identity_success_registration.riv
     - assets/rive_motion/searching.riv

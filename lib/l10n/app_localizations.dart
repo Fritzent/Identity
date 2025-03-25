@@ -418,6 +418,18 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Share your personal project'**
   String get projectHintText;
+
+  /// No description provided for @registrationSuccessText.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration Success'**
+  String get registrationSuccessText;
+
+  /// No description provided for @registrationSuccessSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'It\'s time to attract people with your amazing profile.'**
+  String get registrationSuccessSubtitle;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {
