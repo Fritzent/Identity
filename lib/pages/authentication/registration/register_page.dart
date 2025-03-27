@@ -76,6 +76,7 @@ class _RegisterPageState extends State<RegisterPage> {
                             Column(
                               spacing: FontList.font16,
                               children: [
+                                // * Remember to set a variable to sent status isError so it can show if the password and confirm not same
                                 CustomTextField(
                                   textFieldLabel: AppLocalizations.of(context)!
                                       .fullNameText,
