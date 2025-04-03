@@ -430,6 +430,30 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'It\'s time to attract people with your amazing profile.'**
   String get registrationSuccessSubtitle;
+
+  /// No description provided for @registrationFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Registration Failed'**
+  String get registrationFailed;
+
+  /// No description provided for @passwordWeakErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.'**
+  String get passwordWeakErrorMessage;
+
+  /// No description provided for @passwordNotMatchErrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Passwords do not match. Please try again.'**
+  String get passwordNotMatchErrorMessage;
+
+  /// No description provided for @emailFormatNotCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Your email address is not in the correct format.'**
+  String get emailFormatNotCorrect;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

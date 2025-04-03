@@ -177,4 +177,16 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get registrationSuccessSubtitle => 'It\'s time to attract people with your amazing profile.';
+
+  @override
+  String get registrationFailed => 'Registration Failed';
+
+  @override
+  String get passwordWeakErrorMessage => 'Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.';
+
+  @override
+  String get passwordNotMatchErrorMessage => 'Passwords do not match. Please try again.';
+
+  @override
+  String get emailFormatNotCorrect => 'Your email address is not in the correct format.';
 }

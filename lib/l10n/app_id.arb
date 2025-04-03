@@ -113,5 +113,13 @@
 
   "registrationSuccessText" : "Pendaftaran Berhasil",
 
-  "registrationSuccessSubtitle" : "Sekarang saatnya menarik orang dengan profil Anda yang menakjubkan."
+  "registrationSuccessSubtitle" : "Sekarang saatnya menarik orang dengan profil Anda yang menakjubkan.",
+
+  "registrationFailed" : "Pendaftaran Gagal",
+
+  "passwordWeakErrorMessage" : "Kata sandi Anda harus minimal 8 karakter dan mencakup setidaknya satu huruf besar, satu huruf kecil, satu angka, dan satu karakter khusus.",
+
+  "passwordNotMatchErrorMessage" : "Kata sandi tidak cocok. Silakan coba lagi.",
+
+  "emailFormatNotCorrect" : "Alamat email Anda tidak dalam format yang benar."
 }

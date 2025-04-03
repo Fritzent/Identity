@@ -113,6 +113,14 @@
 
   "registrationSuccessText" : "Registration Success",
 
-  "registrationSuccessSubtitle" : "It's time to attract people with your amazing profile."
+  "registrationSuccessSubtitle" : "It's time to attract people with your amazing profile.",
+
+  "registrationFailed" : "Registration Failed",
+
+  "passwordWeakErrorMessage" : "Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.",
+
+  "passwordNotMatchErrorMessage" : "Passwords do not match. Please try again.",
+
+  "emailFormatNotCorrect" : "Your email address is not in the correct format."
 
 }

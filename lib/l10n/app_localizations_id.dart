@@ -177,4 +177,16 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get registrationSuccessSubtitle => 'Sekarang saatnya menarik orang dengan profil Anda yang menakjubkan.';
+
+  @override
+  String get registrationFailed => 'Pendaftaran Gagal';
+
+  @override
+  String get passwordWeakErrorMessage => 'Kata sandi Anda harus minimal 8 karakter dan mencakup setidaknya satu huruf besar, satu huruf kecil, satu angka, dan satu karakter khusus.';
+
+  @override
+  String get passwordNotMatchErrorMessage => 'Kata sandi tidak cocok. Silakan coba lagi.';
+
+  @override
+  String get emailFormatNotCorrect => 'Alamat email Anda tidak dalam format yang benar.';
 }

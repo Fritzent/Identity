@@ -17,6 +17,7 @@ class CustomTextField extends StatefulWidget {
   final TextInputType keypadType;
   final String? textFieldErrorLabel;
   final bool isError;
+  final String externalErrorText;
   final String formSection;
   final bool hasRightIcon;
   final String? rightIconPath;
@@ -35,6 +36,7 @@ class CustomTextField extends StatefulWidget {
       required this.keypadType,
       this.textFieldErrorLabel,
       this.isError = false,
+      this.externalErrorText = '',
       required this.formSection,
       this.hasRightIcon = false,
       this.rightIconPath,
@@ -398,9 +400,11 @@ class _CustomTextFieldState extends State<CustomTextField> {
                           width: 1.0,
                         ),
                       ),
-                      errorText: state.errorMessage.isNotEmpty
-                          ? state.errorMessage
-                          : null,
+                      errorText: widget.externalErrorText.isNotEmpty
+                          ? widget.externalErrorText
+                          : state.errorMessage.isNotEmpty
+                              ? state.errorMessage
+                              : null,
                     )),
               )
           ],
