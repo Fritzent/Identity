@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
@@ -29,7 +30,7 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
     emit(state.copyWith(isLoading: true));
 
     try {
-      if (Platform.isIOS) {
+      if (!kIsWeb && Platform.isIOS) {
         emit(state.copyWith(
             isLoading: false,
             isError: true,

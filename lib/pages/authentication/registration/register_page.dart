@@ -357,7 +357,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                                           FontList.font24),
                                               child: GestureDetector(
                                                   onTap: () {
-                                                    if (Platform.isIOS) {
+                                                    if (!kIsWeb && Platform.isIOS) {
                                                       showModernDialog(
                                                           context,
                                                           AppLocalizations.of(

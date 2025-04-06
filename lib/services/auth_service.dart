@@ -27,7 +27,7 @@ class AuthService {
           await _auth.signInWithPopup(googleProvider);
       return userCredential.user;
     }
-    else if (Platform.isIOS) {
+    else if (!kIsWeb && Platform.isIOS) {
       return null;
     } 
     else {
