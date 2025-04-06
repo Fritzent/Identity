@@ -189,4 +189,13 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get emailFormatNotCorrect => 'Your email address is not in the correct format.';
+
+  @override
+  String get iosGoogleSignUnSupported => 'Sorry, Google Sign In is not available at this time because we still need your financial support to activate the Apple Developer Account.';
+
+  @override
+  String get understoodText => 'Understood';
+
+  @override
+  String get unavailableText => 'Unavailable';
 }

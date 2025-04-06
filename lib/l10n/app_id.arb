@@ -121,5 +121,11 @@
 
   "passwordNotMatchErrorMessage" : "Kata sandi tidak cocok. Silakan coba lagi.",
 
-  "emailFormatNotCorrect" : "Alamat email Anda tidak dalam format yang benar."
+  "emailFormatNotCorrect" : "Alamat email Anda tidak dalam format yang benar.",
+
+  "iosGoogleSignUnSupported" : "Maaf, Google Sign In tidak tersedia saat ini karena kami masih memerlukan dukungan finansial Anda untuk mengaktifkan Akun Pengembang Apple.",
+
+  "understoodText" : "Mengerti",
+
+  "unavailableText" : "Belum Tersedia"
 }

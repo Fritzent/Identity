@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -13,6 +15,7 @@ import 'package:identity/services/auth_service.dart';
 import 'package:identity/widgets/custom_border_button.dart';
 import 'package:identity/widgets/custom_button.dart';
 import 'package:identity/widgets/custom_text_field.dart';
+import 'package:panara_dialogs/panara_dialogs.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -22,6 +25,37 @@ class RegisterPage extends StatefulWidget {
 }
 
 class _RegisterPageState extends State<RegisterPage> {
+  void showModernDialog(BuildContext context, String title, String message,
+      String buttonText, Function() onTapDismiss, PanaraDialogType type) {
+    PanaraCustomDialog.showAnimatedGrow(
+      context,
+      children: [
+        CircleAvatar(
+          backgroundColor: Theme.of(context).primaryColorDark,
+          radius: 25,
+          child: Icon(Icons.close),
+        ),
+        Gap(FontList.font16),
+        Text(
+          title,
+          style:
+              TextStyle(fontSize: FontList.font24, fontWeight: FontWeight.bold),
+          textAlign: TextAlign.center,
+        ),
+        Gap(FontList.font16),
+        Text(
+          message,
+          style: TextStyle(fontSize: FontList.font18),
+          textAlign: TextAlign.center,
+        ),
+      ],
+      mainAxisAlignment: MainAxisAlignment.center,
+      crossAxisAlignment: CrossAxisAlignment.center,
+      backgroundColor: Theme.of(context).primaryColor,
+      barrierDismissible: true,
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -323,8 +357,28 @@ class _RegisterPageState extends State<RegisterPage> {
                                                           FontList.font24),
                                               child: GestureDetector(
                                                   onTap: () {
-                                                    print(
-                                                        'Hello Button SignUp');
+                                                    if (Platform.isIOS) {
+                                                      showModernDialog(
+                                                          context,
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .unavailableText,
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .iosGoogleSignUnSupported,
+                                                          AppLocalizations.of(
+                                                                  context)!
+                                                              .understoodText,
+                                                          () {
+                                                        Navigator.pop(context);
+                                                      },
+                                                          PanaraDialogType
+                                                              .error);
+                                                    } else {
+                                                      bloc.add(
+                                                          OnGoogleSignInAuth(
+                                                              context));
+                                                    }
                                                   },
                                                   child: CustomBorderButton(
                                                     textButton:

@@ -8,6 +8,11 @@ class OnRegisterAuth extends RegisterAuthEvent {
   OnRegisterAuth(this.context);
 }
 
+class OnGoogleSignInAuth extends RegisterAuthEvent {
+  final BuildContext context;
+  OnGoogleSignInAuth(this.context);
+}
+
 class OnFieldTextChanges extends RegisterAuthEvent {
   final String textValue;
   final String formSection;

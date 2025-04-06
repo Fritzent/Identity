@@ -12,6 +12,7 @@ import firebase_core
 import firebase_messaging
 import flutter_any_logo
 import geolocator_apple
+import google_sign_in_ios
 import path_provider_foundation
 import rive_common
 
@@ -23,6 +24,7 @@ func RegisterGeneratedPlugins(registry: FlutterPluginRegistry) {
   FLTFirebaseMessagingPlugin.register(with: registry.registrar(forPlugin: "FLTFirebaseMessagingPlugin"))
   FlutterAnyLogoPlugin.register(with: registry.registrar(forPlugin: "FlutterAnyLogoPlugin"))
   GeolocatorPlugin.register(with: registry.registrar(forPlugin: "GeolocatorPlugin"))
+  FLTGoogleSignInPlugin.register(with: registry.registrar(forPlugin: "FLTGoogleSignInPlugin"))
   PathProviderPlugin.register(with: registry.registrar(forPlugin: "PathProviderPlugin"))
   RivePlugin.register(with: registry.registrar(forPlugin: "RivePlugin"))
 }

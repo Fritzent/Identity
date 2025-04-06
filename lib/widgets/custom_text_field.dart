@@ -149,15 +149,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       },
                     );
 
-                    if (pickedDate != null) {
-                      String formattedDate =
-                          DateFormat("yyyy-MM-dd").format(pickedDate);
-                      if (widget.onChanged != null) {
-                        state.controller?.text = formattedDate;
-                        widget.onChanged!(formattedDate);
-                      }
+                    String formattedDate =
+                        DateFormat("yyyy-MM-dd").format(pickedDate!);
+                    if (widget.onChanged != null) {
+                      state.controller?.text = formattedDate;
+                      widget.onChanged!(formattedDate);
                     }
-                  }
+                                    }
                 },
                 child: AbsorbPointer(
                   child: TextFormField(

@@ -454,6 +454,24 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Your email address is not in the correct format.'**
   String get emailFormatNotCorrect;
+
+  /// No description provided for @iosGoogleSignUnSupported.
+  ///
+  /// In en, this message translates to:
+  /// **'Sorry, Google Sign In is not available at this time because we still need your financial support to activate the Apple Developer Account.'**
+  String get iosGoogleSignUnSupported;
+
+  /// No description provided for @understoodText.
+  ///
+  /// In en, this message translates to:
+  /// **'Understood'**
+  String get understoodText;
+
+  /// No description provided for @unavailableText.
+  ///
+  /// In en, this message translates to:
+  /// **'Unavailable'**
+  String get unavailableText;
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

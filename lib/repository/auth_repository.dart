@@ -10,6 +10,10 @@ class AuthRepository {
     return _authService.registerWithEmail(email, password);
   }
 
+  Future<User?> googleSignIn() {
+    return _authService.signInWithGoogle();
+  }
+
   // Future<User?> login(String email, String password) {
   //   return _authService.loginUser(email, password);
   // }

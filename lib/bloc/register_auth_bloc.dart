@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +21,53 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
       : super(RegisterAuthState()) {
     on<OnRegisterAuth>(onRegisterAuth);
     on<OnFieldTextChanges>(onFieldTextChanges);
+    on<OnGoogleSignInAuth>(onGoogleSignInAuth);
+  }
+
+  FutureOr<void> onGoogleSignInAuth(
+      OnGoogleSignInAuth event, Emitter<RegisterAuthState> emit) async {
+    emit(state.copyWith(isLoading: true));
+
+    try {
+      if (Platform.isIOS) {
+        emit(state.copyWith(
+            isLoading: false,
+            isError: true,
+            isDeviceUnSupported: true,
+            errorMessage:
+                AppLocalizations.of(event.context)!.iosGoogleSignUnSupported,
+          ));
+      } else {
+        final user = await authRepository.googleSignIn();
+        if (user != null) {
+          var uuid = Uuid();
+          String userId = uuid.v4();
+          User userGoogle = User(
+              userId: userId,
+              username: user.displayName.toString(),
+              email: user.email.toString());
+
+          await userBox.add(userGoogle);
+          emit(state.copyWith(
+              isLoading: false,
+              isError: false,
+              errorMessage: '',
+              isDeviceUnSupported: false,
+              isRegistrationDone: true));
+        } else {
+          emit(state.copyWith(
+            isLoading: false,
+            isError: true,
+            isDeviceUnSupported: false,
+            errorMessage:
+                AppLocalizations.of(event.context)!.registrationFailed,
+          ));
+        }
+      }
+    } catch (e) {
+      emit(state.copyWith(
+          isLoading: false, errorMessage: e.toString(), isError: true, isDeviceUnSupported: false));
+    }
   }
 
   FutureOr<void> onRegisterAuth(

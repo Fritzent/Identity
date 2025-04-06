@@ -189,4 +189,13 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get emailFormatNotCorrect => 'Alamat email Anda tidak dalam format yang benar.';
+
+  @override
+  String get iosGoogleSignUnSupported => 'Maaf, Google Sign In tidak tersedia saat ini karena kami masih memerlukan dukungan finansial Anda untuk mengaktifkan Akun Pengembang Apple.';
+
+  @override
+  String get understoodText => 'Mengerti';
+
+  @override
+  String get unavailableText => 'Belum Tersedia';
 }

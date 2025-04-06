@@ -52,5 +52,9 @@
 		<string>en</string>
 		<string>id</string>
 	</array>
+	<key>CFBundleURLSchemes</key>
+    <array>
+      <string>com.googleusercontent.apps.294941814321-tocmh3p03duur7brss5qgfkaq24gni66</string>
+    </array>
 </dict>
 </plist>

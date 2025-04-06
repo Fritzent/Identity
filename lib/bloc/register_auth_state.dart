@@ -11,6 +11,7 @@ class RegisterAuthState {
   final bool isError;
   final String errorMessage;
   final bool isRegistrationDone;
+  final bool isDeviceUnSupported;
 
   RegisterAuthState({
     this.nameTxt = '',
@@ -23,6 +24,7 @@ class RegisterAuthState {
     this.errorMessage = '',
     List<Map<String, String>>? fieldErrorComponent,
     this.isRegistrationDone = false,
+    this.isDeviceUnSupported = false,
   }): fieldErrorComponent = fieldErrorComponent ?? [];
 
   RegisterAuthState copyWith({
@@ -36,6 +38,7 @@ class RegisterAuthState {
     bool? isError,
     String? errorMessage,
     bool? isRegistrationDone,
+    bool? isDeviceUnSupported,
   }) {
     return RegisterAuthState(
       nameTxt: nameTxt ?? this.nameTxt,
@@ -48,6 +51,7 @@ class RegisterAuthState {
       errorMessage: errorMessage ?? this.errorMessage,
       fieldErrorComponent : fieldErrorComponent ?? this.fieldErrorComponent,
       isRegistrationDone: isRegistrationDone ?? this.isRegistrationDone,
+      isDeviceUnSupported : isDeviceUnSupported ?? this.isDeviceUnSupported,
     );
   }
 }
