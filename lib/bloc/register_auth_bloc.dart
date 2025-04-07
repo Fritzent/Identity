@@ -1,15 +1,18 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:identity/l10n/app_localizations.dart';
+import 'package:identity/model/user_model.dart';
 import 'package:identity/repository/auth_repository.dart';
 import 'package:uuid/uuid.dart';
 
-import '../database/user.dart';
+import '../database/user.dart' as UserModelHive;
 
 part 'register_auth_event.dart';
 part 'register_auth_state.dart';
@@ -32,23 +35,30 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
     try {
       if (!kIsWeb && Platform.isIOS) {
         emit(state.copyWith(
-            isLoading: false,
-            isError: true,
-            isDeviceUnSupported: true,
-            errorMessage:
-                AppLocalizations.of(event.context)!.iosGoogleSignUnSupported,
-          ));
+          isLoading: false,
+          isError: true,
+          isDeviceUnSupported: true,
+          errorMessage:
+              AppLocalizations.of(event.context)!.iosGoogleSignUnSupported,
+        ));
       } else {
         final user = await authRepository.googleSignIn();
         if (user != null) {
           var uuid = Uuid();
           String userId = uuid.v4();
-          User userGoogle = User(
+          UserModels userGoogle = UserModels(
+              username: user.displayName.toString(),
+              email: user.email.toString(),
+              userId: userId,
+              authUserId: user.uid);
+          await saveUserToDatabase(userGoogle);
+
+          UserModelHive.User userGoogleHive = UserModelHive.User(
               userId: userId,
               username: user.displayName.toString(),
               email: user.email.toString());
 
-          await userBox.add(userGoogle);
+          await userBox.add(userGoogleHive);
           emit(state.copyWith(
               isLoading: false,
               isError: false,
@@ -67,7 +77,10 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
       }
     } catch (e) {
       emit(state.copyWith(
-          isLoading: false, errorMessage: e.toString(), isError: true, isDeviceUnSupported: false));
+          isLoading: false,
+          errorMessage: e.toString(),
+          isError: true,
+          isDeviceUnSupported: false));
     }
   }
 
@@ -83,9 +96,17 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
         if (user != null) {
           var uuid = Uuid();
           String userId = uuid.v4();
-          User user = User(
+          UserModels userModel = UserModels(
+              username: state.nameTxt,
+              email: state.emailTxt,
+              userId: userId,
+              authUserId: user.uid);
+          await saveUserToDatabase(userModel);
+
+          UserModelHive.User userHive = UserModelHive.User(
               username: state.nameTxt, email: state.emailTxt, userId: userId);
-          await userBox.add(user);
+
+          await userBox.add(userHive);
           emit(state.copyWith(
               isLoading: false,
               isError: false,
@@ -323,6 +344,21 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
             isValidDataForm: false,
             fieldErrorComponent: updatedFieldErrorComponent));
       }
+    }
+  }
+
+  Future<void> saveUserToDatabase(UserModels user) async {
+    try {
+      final userCollection = FirebaseFirestore.instance.collection('Users');
+      await userCollection.doc(user.authUserId).set({
+        'username': user.username,
+        'email': user.email,
+        'user_id': user.userId,
+        'authUserId': user.authUserId,
+        'uid': FirebaseAuth.instance.currentUser!.uid,
+      });
+    } catch (e) {
+      print(e.toString());
     }
   }
 }
