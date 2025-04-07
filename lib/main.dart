@@ -2,6 +2,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:identity/bloc/language_data_bloc.dart';
 import 'package:identity/database/cv.dart';
+import 'package:identity/database/data_stepper.dart';
 import 'package:identity/database/language.dart';
 import 'package:identity/database/themes.dart';
 import 'package:identity/database/user.dart';
@@ -25,10 +26,12 @@ void main() async {
   Hive.registerAdapter(LanguageAdapter());
   Hive.registerAdapter((CvPdfFileAdapter()));
   Hive.registerAdapter((UserAdapter()));
+  Hive.registerAdapter((DataStepperAdapter()));
   await Hive.openBox('themesBox');
   await Hive.openBox('languageBox');
   await Hive.openBox('cvPdfFileBox');
   await Hive.openBox('userBox');
+  await Hive.openBox('dataStepperBox');
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
