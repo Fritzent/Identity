@@ -1,4 +1,5 @@
 import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:identity/bloc/language_data_bloc.dart';
 import 'package:identity/database/cv.dart';
@@ -7,6 +8,7 @@ import 'package:identity/database/language.dart';
 import 'package:identity/database/themes.dart';
 import 'package:identity/database/user.dart';
 import 'package:identity/l10n/app_localizations.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 import 'firebase_options.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -21,7 +23,11 @@ import 'package:identity/l10n/l10n.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await dotenv.load(fileName: '.env');
   await Hive.initFlutter();
+  await Supabase.initialize(
+      url: dotenv.env['SUPABASE_URL'].toString(),
+      anonKey: dotenv.env['SUPABASE_KEY'].toString());
   Hive.registerAdapter(ThemesAdapter());
   Hive.registerAdapter(LanguageAdapter());
   Hive.registerAdapter((CvPdfFileAdapter()));
