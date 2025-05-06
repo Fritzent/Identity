@@ -11,6 +11,7 @@ class RegisterBioFormBloc
     extends Bloc<RegisterBioFormEvent, RegisterBioFormState> {
   RegisterBioFormBloc() : super(RegisterBioFormState()) {
     on<OnFieldTextChanges>(onFieldTextChanges);
+    on<OnSubmitDataBio>(onSubmitDataBio);
   }
   FutureOr<void> onFieldTextChanges(
       OnFieldTextChanges event, Emitter<RegisterBioFormState> emit) {
@@ -116,4 +117,7 @@ class RegisterBioFormBloc
       }
     }
   }
+
+  FutureOr<void> onSubmitDataBio(
+      OnSubmitDataBio event, Emitter<RegisterBioFormState> emit) {}
 }

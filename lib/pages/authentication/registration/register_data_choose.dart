@@ -6,8 +6,10 @@ import 'package:go_router/go_router.dart';
 import 'package:identity/bloc/register_data_selected_bloc.dart';
 import 'package:identity/data/section_data_items.dart';
 import 'package:identity/l10n/app_localizations.dart';
+import 'package:identity/repository/selected_data_repository.dart';
 import 'package:identity/resources/font_config.dart';
 import 'package:identity/routes/app_route_constants.dart';
+import 'package:identity/services/selected_page_service.dart';
 import 'package:identity/widgets/custom_button.dart';
 import 'package:identity/widgets/custom_button_choosen.dart';
 
@@ -30,36 +32,13 @@ class _RegisterDataChooseState extends State<RegisterDataChoose> {
               RegisterDataSelectedState>(
             listener: (context, state) {
               if (!state.isLoading && state.isChooseDataDone) {
-                if (state.selectedItems.any((item) =>
-                    item.sectionName == sectionItemData[0].sectionName)) {
-                  if (mounted) {
-                    GoRouter.of(context).pushReplacementNamed(
-                        IdentityRouteConstant.bioFormName);
-                  }
-                } else if (state.selectedItems.any((item) =>
-                    item.sectionName == sectionItemData[1].sectionName)) {
-                  if (mounted) {
-                    GoRouter.of(context)
-                        .pushReplacementNamed(IdentityRouteConstant.cvFormName);
-                  }
-                } else {
-                  final stepThreeNames = sectionItemData
-                      .sublist(2, 6)
-                      .map((e) => e.sectionName)
-                      .toList();
+                final selectedPageService = SelectedPageService();
+                final dataRepository =
+                    SelectedDataRepository(selectedPageService);
 
-                  List<String> listStepThirdSelected = state.selectedItems
-                      .where(
-                          (item) => stepThreeNames.contains(item.sectionName))
-                      .map((item) => item.sectionName)
-                      .toList();
-
-                  if (listStepThirdSelected.isNotEmpty) {
-                    if (mounted) {
-                      GoRouter.of(context).pushReplacementNamed(
-                          IdentityRouteConstant.urlFormName);
-                    }
-                  }
+                if (mounted) {
+                  dataRepository.selectedPageService
+                      .checkNextPage(state.selectedItems, context);
                 }
               }
             },
