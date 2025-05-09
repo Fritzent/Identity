@@ -167,7 +167,6 @@ class RegisterBioFormBloc
   }
 
   FutureOr<void> updatedDataStepper(Emitter<RegisterBioFormState> emit) async {
-    emit(state.copyWith(isLoading: true));
     try {
       String onProgressDataStep = "step_two";
       final user = FirebaseAuth.instance.currentUser;

@@ -25,9 +25,9 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await dotenv.load(fileName: '.env');
   await Hive.initFlutter();
-  // await Supabase.initialize(
-  //     url: dotenv.env['SUPABASE_URL'].toString(),
-  //     anonKey: dotenv.env['SUPABASE_KEY'].toString());
+  await Supabase.initialize(
+      url: dotenv.env['SUPABASE_URL'].toString(),
+      anonKey: dotenv.env['SUPABASE_KEY'].toString());
   Hive.registerAdapter(ThemesAdapter());
   Hive.registerAdapter(LanguageAdapter());
   Hive.registerAdapter((CvPdfFileAdapter()));

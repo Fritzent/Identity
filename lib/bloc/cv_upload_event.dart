@@ -4,3 +4,5 @@ part of 'cv_upload_bloc.dart';
 sealed class CvUploadEvent {}
 
 class PickAndSaveFile extends CvUploadEvent {}
+
+class OnSubmitCV extends CvUploadEvent {}
