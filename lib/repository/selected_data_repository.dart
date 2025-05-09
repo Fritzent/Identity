@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:flutter/widgets.dart';
-import 'package:identity/model/section_data_item.dart';
 import 'package:identity/services/selected_page_service.dart';
 
 class SelectedDataRepository {
@@ -9,7 +8,7 @@ class SelectedDataRepository {
 
   SelectedDataRepository(this.selectedPageService);
 
-  FutureOr<void> checkPage(List<SectionItemData> data, BuildContext context) {
-    return selectedPageService.checkNextPage(data, context);
+  FutureOr<void> checkPage(BuildContext context, String stepPage) {
+    return selectedPageService.checkNextPage(context, stepPage);
   }
 }

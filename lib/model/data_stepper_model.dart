@@ -9,23 +9,23 @@ String dataStepperToJson(List<DataStepper> data) =>
 class DataStepper {
   final String authUserId;
   final String? onProgressDataStep;
-  final String? isStepOneSelected;
-  final String? isStepTwoSelected;
+  final bool isStepOneSelected;
+  final bool isStepTwoSelected;
   final List<String>? listStepThirdSelected;
 
   DataStepper({
     required this.authUserId,
     this.onProgressDataStep,
-    this.isStepOneSelected,
-    this.isStepTwoSelected,
+    required this.isStepOneSelected,
+    required this.isStepTwoSelected,
     this.listStepThirdSelected,
   });
 
   DataStepper copyWith({
     String? authUserId,
     String? onProgressDataStep,
-    String? isStepOneSelected,
-    String? isStepTwoSelected,
+    bool? isStepOneSelected,
+    bool? isStepTwoSelected,
     List<String>? listStepThirdSelected,
   }) =>
       DataStepper(

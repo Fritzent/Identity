@@ -2,13 +2,11 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:gap/gap.dart';
-import 'package:go_router/go_router.dart';
 import 'package:identity/bloc/register_data_selected_bloc.dart';
 import 'package:identity/data/section_data_items.dart';
 import 'package:identity/l10n/app_localizations.dart';
 import 'package:identity/repository/selected_data_repository.dart';
 import 'package:identity/resources/font_config.dart';
-import 'package:identity/routes/app_route_constants.dart';
 import 'package:identity/services/selected_page_service.dart';
 import 'package:identity/widgets/custom_button.dart';
 import 'package:identity/widgets/custom_button_choosen.dart';
@@ -38,7 +36,7 @@ class _RegisterDataChooseState extends State<RegisterDataChoose> {
 
                 if (mounted) {
                   dataRepository.selectedPageService
-                      .checkNextPage(state.selectedItems, context);
+                      .checkNextPage(context, 'RegisterDataChoosePage');
                 }
               }
             },
