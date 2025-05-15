@@ -230,7 +230,7 @@ class _LoginPageState extends State<LoginPage> {
                                                     GoRouter.of(context)
                                                         .pushReplacementNamed(
                                                             IdentityRouteConstant
-                                                                .registerRouteName);
+                                                                .mainDashboard);
                                                   }
                                                 },
                                                 child: Text(

@@ -32,15 +32,7 @@ class _RegisterSuccessPageState extends State<RegisterSuccessPage> {
   @override
   void initState() {
     super.initState();
-    controller = OneShotAnimation('Idle', autoplay: true, onStop: () {
-      // Future.delayed(const Duration(milliseconds: 100), () {
-      //   if (mounted) {
-      //     GoRouter.of(context).goNamed(IdentityRouteConstant.startedRouteName);
-      //   } else {
-      //     print('Widget is not mounted, skipping navigation.');
-      //   }
-      // });
-    });
+    controller = OneShotAnimation('Idle', autoplay: true, onStop: () {});
   }
 
   @override
@@ -119,7 +111,7 @@ class _RegisterSuccessPageState extends State<RegisterSuccessPage> {
                               onTap: () {
                                 if (mounted) {
                                   GoRouter.of(context).pushReplacementNamed(
-                                      IdentityRouteConstant.registerRouteName);
+                                      IdentityRouteConstant.mainDashboard);
                                 }
                               },
                               child: CustomButton(

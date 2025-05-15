@@ -7,6 +7,7 @@ import 'package:identity/pages/authentication/registration/preparation/link_url_
 import 'package:identity/pages/authentication/registration/register_data_choose.dart';
 import 'package:identity/pages/authentication/registration/register_page.dart';
 import 'package:identity/pages/authentication/registration/register_success_page.dart';
+import 'package:identity/pages/dashboard/main_dashboard.dart';
 import 'package:identity/pages/splash_page.dart';
 import 'package:identity/pages/started_page.dart';
 import 'package:identity/routes/app_route_constants.dart';
@@ -74,6 +75,13 @@ class MyAppRouter {
           name: IdentityRouteConstant.registrationSuccessName,
           pageBuilder: (context, state) {
             return MaterialPage(child: RegisterSuccessPage());
+          },
+        ),
+        GoRoute(
+          path: '/main_dashboard_page',
+          name: IdentityRouteConstant.mainDashboard,
+          pageBuilder: (context, state) {
+            return MaterialPage(child: MainDashboard());
           },
         ),
 
