@@ -8,6 +8,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:identity/database/cv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:identity/model/data_stepper_model.dart' as data_stepper;
 
 part 'cv_upload_event.dart';
 part 'cv_upload_state.dart';
@@ -154,16 +155,32 @@ class CvUploadBloc extends Bloc<CvUploadEvent, CvUploadState> {
 
   FutureOr<void> updatedDataStepper(Emitter<CvUploadState> emit) async {
     try {
-      String onProgressDataStep = "step_three";
+      String onProgressDataStep = '';
+      final stepperCollection =
+          FirebaseFirestore.instance.collection('DataStepper');
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
-        await FirebaseFirestore.instance
-            .collection('DataStepper')
-            .doc(user.uid)
-            .update({
-          'onprogress_data_step': onProgressDataStep,
-        });
+        final docSnapshot = await stepperCollection.doc(user.uid).get();
+        if (docSnapshot.exists) {
+          final dataStepper =
+              data_stepper.DataStepper.fromJson(docSnapshot.data()!);
+
+          if (dataStepper.listStepThirdSelected?.isNotEmpty ?? false) {
+            onProgressDataStep = 'step_three';
+          }
+          else {
+            onProgressDataStep = 'done';
+          }
+
+          await FirebaseFirestore.instance
+              .collection('DataStepper')
+              .doc(user.uid)
+              .update({
+            'onprogress_data_step': onProgressDataStep,
+          });
+        }
       }
+
     } catch (e) {
       emit(state.copyWith(
         isLoading: false,

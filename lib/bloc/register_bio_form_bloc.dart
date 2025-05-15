@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:identity/l10n/app_localizations.dart';
+import 'package:identity/model/data_stepper_model.dart' as data_stepper;
 
 part 'register_bio_form_event.dart';
 part 'register_bio_form_state.dart';
@@ -168,15 +169,32 @@ class RegisterBioFormBloc
 
   FutureOr<void> updatedDataStepper(Emitter<RegisterBioFormState> emit) async {
     try {
-      String onProgressDataStep = "step_two";
+      String onProgressDataStep = '';
+      final stepperCollection =
+          FirebaseFirestore.instance.collection('DataStepper');
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
-        await FirebaseFirestore.instance
-            .collection('DataStepper')
-            .doc(user.uid)
-            .update({
-          'onprogress_data_step': onProgressDataStep,
-        });
+        final docSnapshot = await stepperCollection.doc(user.uid).get();
+        if (docSnapshot.exists) {
+          final dataStepper =
+              data_stepper.DataStepper.fromJson(docSnapshot.data()!);
+
+          if (dataStepper.isStepTwoSelected) {
+            onProgressDataStep = 'step_two';
+          } else if (dataStepper.listStepThirdSelected?.isNotEmpty ?? false) {
+            onProgressDataStep = 'step_three';
+          }
+          else {
+            onProgressDataStep = 'done';
+          }
+
+          await FirebaseFirestore.instance
+              .collection('DataStepper')
+              .doc(user.uid)
+              .update({
+            'onprogress_data_step': onProgressDataStep,
+          });
+        }
       }
     } catch (e) {
       emit(state.copyWith(

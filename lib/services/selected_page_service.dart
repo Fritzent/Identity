@@ -10,15 +10,6 @@ import 'package:identity/routes/app_route_constants.dart';
 class SelectedPageService {
   FutureOr<void> checkNextPage(BuildContext context, String stepPage) async {
     try {
-      bool isBioSkip = stepPage == 'BioFormPage' ||
-              stepPage == 'CVFormPage' ||
-              stepPage == 'LinkUrlFormPage'
-          ? true
-          : false;
-      bool isCvSkip = stepPage == 'CVFormPage' || stepPage == 'LinkUrlFormPage'
-          ? true
-          : false;
-
       final stepperCollection =
           FirebaseFirestore.instance.collection('DataStepper');
       final user = FirebaseAuth.instance.currentUser;
@@ -30,17 +21,18 @@ class SelectedPageService {
           final dataStepper =
               data_stepper.DataStepper.fromJson(docSnapshot.data()!);
 
-          if (dataStepper.isStepOneSelected && !isBioSkip) {
+          if (dataStepper.onProgressDataStep == 'step_one') {
             GoRouter.of(context)
                 .pushReplacementNamed(IdentityRouteConstant.bioFormName);
-          } else if (dataStepper.isStepTwoSelected && !isCvSkip) {
+          } else if (dataStepper.onProgressDataStep == 'step_two') {
             GoRouter.of(context)
                 .pushReplacementNamed(IdentityRouteConstant.cvFormName);
+          } else if (dataStepper.onProgressDataStep == 'step_three') {
+            GoRouter.of(context)
+                .pushReplacementNamed(IdentityRouteConstant.urlFormName);
           } else {
-            if (dataStepper.listStepThirdSelected?.isNotEmpty ?? false) {
-              GoRouter.of(context)
-                  .pushReplacementNamed(IdentityRouteConstant.urlFormName);
-            }
+            GoRouter.of(context).pushReplacementNamed(
+                IdentityRouteConstant.registrationSuccessName);
           }
         }
       }
