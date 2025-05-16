@@ -127,6 +127,16 @@
 
   "understoodText" : "Understood",
 
-  "unavailableText" : "Unavailable"
+  "unavailableText" : "Unavailable",
+
+  "userNotFound" : "User Not Found",
+
+  "wrongPassword" : "Password not correct",
+
+  "invalidEmail" : "Email not valid",
+
+  "loginFailedWithMessage" : "Login faield {error}",
+
+  "unexpectedErrorLogin" : "Unexpected error {error}"
 
 }

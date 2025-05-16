@@ -38,4 +38,38 @@ class SelectedPageService {
       }
     } catch (e) {}
   }
+
+  FutureOr<void> checkStepperData(BuildContext context) async {
+    try {
+      final stepperCollection =
+          FirebaseFirestore.instance.collection('DataStepper');
+      final user = FirebaseAuth.instance.currentUser;
+
+      if (user != null) {
+        final docSnapshot = await stepperCollection.doc(user.uid).get();
+
+        if (docSnapshot.exists) {
+          final dataStepper =
+              data_stepper.DataStepper.fromJson(docSnapshot.data()!);
+
+          if (dataStepper.onProgressDataStep == 'step_one') {
+            GoRouter.of(context)
+                .pushReplacementNamed(IdentityRouteConstant.bioFormName);
+          } else if (dataStepper.onProgressDataStep == 'step_two') {
+            GoRouter.of(context)
+                .pushReplacementNamed(IdentityRouteConstant.cvFormName);
+          } else if (dataStepper.onProgressDataStep == 'step_three') {
+            GoRouter.of(context)
+                .pushReplacementNamed(IdentityRouteConstant.urlFormName);
+          } else {
+            GoRouter.of(context)
+                .pushReplacementNamed(IdentityRouteConstant.mainDashboard);
+          }
+        } else {
+          GoRouter.of(context)
+              .pushReplacementNamed(IdentityRouteConstant.registerDataChoose);
+        }
+      }
+    } catch (e) {}
+  }
 }

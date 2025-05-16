@@ -127,5 +127,15 @@
 
   "understoodText" : "Mengerti",
 
-  "unavailableText" : "Belum Tersedia"
+  "unavailableText" : "Belum Tersedia",
+
+  "userNotFound" : "Akun tidak ditemukan",
+
+  "wrongPassword" : "Kata sandi anda salah",
+
+  "invalidEmail" : "Email tidak sesuai",
+
+  "loginFailedWithMessage" : "Login gagal karena {error}",
+
+  "unexpectedErrorLogin" : "Terjadi kesalahan {error}"
 }

@@ -198,4 +198,23 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get unavailableText => 'Belum Tersedia';
+
+  @override
+  String get userNotFound => 'Akun tidak ditemukan';
+
+  @override
+  String get wrongPassword => 'Kata sandi anda salah';
+
+  @override
+  String get invalidEmail => 'Email tidak sesuai';
+
+  @override
+  String loginFailedWithMessage(Object error) {
+    return 'Login gagal karena $error';
+  }
+
+  @override
+  String unexpectedErrorLogin(Object error) {
+    return 'Terjadi kesalahan $error';
+  }
 }

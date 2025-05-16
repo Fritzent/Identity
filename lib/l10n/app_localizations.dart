@@ -472,6 +472,36 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Unavailable'**
   String get unavailableText;
+
+  /// No description provided for @userNotFound.
+  ///
+  /// In en, this message translates to:
+  /// **'User Not Found'**
+  String get userNotFound;
+
+  /// No description provided for @wrongPassword.
+  ///
+  /// In en, this message translates to:
+  /// **'Password not correct'**
+  String get wrongPassword;
+
+  /// No description provided for @invalidEmail.
+  ///
+  /// In en, this message translates to:
+  /// **'Email not valid'**
+  String get invalidEmail;
+
+  /// No description provided for @loginFailedWithMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Login faield {error}'**
+  String loginFailedWithMessage(Object error);
+
+  /// No description provided for @unexpectedErrorLogin.
+  ///
+  /// In en, this message translates to:
+  /// **'Unexpected error {error}'**
+  String unexpectedErrorLogin(Object error);
 }
 
 class _AppLocalizationsDelegate extends LocalizationsDelegate<AppLocalizations> {

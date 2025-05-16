@@ -1,4 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:identity/services/auth_service.dart';
 
 class AuthRepository {
@@ -10,15 +11,11 @@ class AuthRepository {
     return _authService.registerWithEmail(email, password);
   }
 
+  Future<User?> login(String email, String password, BuildContext context) {
+    return _authService.loginWithEmail(email, password, context);
+  }
+
   Future<User?> googleSignIn() {
     return _authService.signInWithGoogle();
   }
-
-  // Future<User?> login(String email, String password) {
-  //   return _authService.loginUser(email, password);
-  // }
-
-  // Future<void> logout() {
-  //   return _authService.logoutUser();
-  // }
 }

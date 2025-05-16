@@ -198,4 +198,23 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get unavailableText => 'Unavailable';
+
+  @override
+  String get userNotFound => 'User Not Found';
+
+  @override
+  String get wrongPassword => 'Password not correct';
+
+  @override
+  String get invalidEmail => 'Email not valid';
+
+  @override
+  String loginFailedWithMessage(Object error) {
+    return 'Login faield $error';
+  }
+
+  @override
+  String unexpectedErrorLogin(Object error) {
+    return 'Unexpected error $error';
+  }
 }

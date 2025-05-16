@@ -11,4 +11,8 @@ class SelectedDataRepository {
   FutureOr<void> checkPage(BuildContext context, String stepPage) {
     return selectedPageService.checkNextPage(context, stepPage);
   }
+
+  FutureOr<void> checkStepperData(BuildContext context) {
+    return selectedPageService.checkStepperData(context);
+  }
 }
