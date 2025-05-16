@@ -42,11 +42,7 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
-  if (kIsWeb) {
-    await webRequestLocationPermission();
-  } else {
-    await requestLocationPermission();
-  }
+  await ensureLocationPermission();
 
   SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp])
       .then((value) {
@@ -64,20 +60,22 @@ void main() async {
   });
 }
 
-Future<void> requestLocationPermission() async {
+Future<bool> ensureLocationPermission() async {
   LocationPermission permission = await Geolocator.checkPermission();
-  if (permission == LocationPermission.denied ||
-      permission == LocationPermission.deniedForever) {
-    await Geolocator.requestPermission();
-  }
-}
 
-Future<void> webRequestLocationPermission() async {
-  LocationPermission permission = await Geolocator.checkPermission();
-  if (permission == LocationPermission.denied ||
-      permission == LocationPermission.deniedForever) {
-    await Geolocator.requestPermission();
+  if (permission == LocationPermission.always ||
+      permission == LocationPermission.whileInUse) {
+    return true;
   }
+
+  permission = await Geolocator.requestPermission();
+
+  if (permission == LocationPermission.always ||
+      permission == LocationPermission.whileInUse) {
+    return true;
+  }
+
+  return false;
 }
 
 class MainApp extends StatefulWidget {

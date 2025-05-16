@@ -4,6 +4,8 @@
 <dict>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We need your location to adjust the theme based on sunrise and sunset.</string>
+	<key>NSLocationAlwaysUsageDescription</key>
+	<string>We need your location to adjust the theme based on sunrise and sunset.</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
