@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:hive/hive.dart';
 import 'package:identity/pages/authentication/login/login_page.dart';
 import 'package:identity/pages/authentication/registration/preparation/bio_form.dart';
 import 'package:identity/pages/authentication/registration/preparation/cv_form.dart';
@@ -25,11 +26,19 @@ class MyAppRouter {
               return MaterialPage(child: SplashPage());
             }),
         GoRoute(
-            path: '/started_page',
-            name: IdentityRouteConstant.startedRouteName,
-            pageBuilder: (context, state) {
-              return MaterialPage(child: StartedPage());
-            }),
+          path: '/started_page',
+          name: IdentityRouteConstant.startedRouteName,
+          pageBuilder: (context, state) {
+            return MaterialPage(child: StartedPage());
+          },
+          redirect: (context, state) async {
+            final userBox = Hive.box('userBox');
+            if (userBox.isNotEmpty && state.matchedLocation == '/started_page') {
+              return '/main_dashboard_page';
+            }
+            return null;
+          },
+        ),
         GoRoute(
             path: '/login_page',
             name: IdentityRouteConstant.loginRouteName,
