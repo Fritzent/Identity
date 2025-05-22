@@ -25,6 +25,7 @@ class LoginAuthBloc extends Bloc<LoginAuthEvent, LoginAuthState> {
     on<OnLoginAuth>(onLoginAuth);
     on<OnFieldTextChanges>(onFieldTextChanges);
     on<OnGoogleSignInAuth>(onGoogleSignInAuth);
+    on<OnPopUpShow>(onPopUpShow);
   }
 
   FutureOr<void> onLoginAuth(
@@ -287,5 +288,9 @@ class LoginAuthBloc extends Bloc<LoginAuthEvent, LoginAuthState> {
     } catch (e) {
       print(e.toString());
     }
+  }
+
+  FutureOr<void>onPopUpShow(OnPopUpShow event, Emitter<LoginAuthState> emit){
+    emit(state.copyWith(isPopUpShow: !state.isPopUpShow, isError: false));
   }
 }

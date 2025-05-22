@@ -37,7 +37,7 @@ class _CvFormState extends State<CvForm> {
 
                 if (mounted) {
                   dataRepository.selectedPageService
-                      .checkNextPage(context, 'CVFormPage');
+                      .checkNextPage(context);
                 }
               }
             },

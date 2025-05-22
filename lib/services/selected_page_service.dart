@@ -8,7 +8,7 @@ import 'package:identity/model/data_stepper_model.dart' as data_stepper;
 import 'package:identity/routes/app_route_constants.dart';
 
 class SelectedPageService {
-  FutureOr<void> checkNextPage(BuildContext context, String stepPage) async {
+  FutureOr<void> checkNextPage(BuildContext context) async {
     try {
       final stepperCollection =
           FirebaseFirestore.instance.collection('DataStepper');

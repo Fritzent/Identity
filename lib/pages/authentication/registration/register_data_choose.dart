@@ -36,7 +36,7 @@ class _RegisterDataChooseState extends State<RegisterDataChoose> {
 
                 if (mounted) {
                   dataRepository.selectedPageService
-                      .checkNextPage(context, 'RegisterDataChoosePage');
+                      .checkNextPage(context);
                 }
               }
             },

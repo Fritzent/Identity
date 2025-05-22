@@ -10,6 +10,7 @@ class LoginAuthState {
   final String errorMessage;
   final bool isLoginDone;
   final bool isDeviceUnSupported;
+  final bool isPopUpShow;
 
   LoginAuthState({
     this.emailTxt = '',
@@ -21,6 +22,7 @@ class LoginAuthState {
     this.errorMessage = '',
     this.isLoginDone = false,
     this.isDeviceUnSupported = false,
+    this.isPopUpShow = false,
   }) : fieldErrorComponent = fieldErrorComponent ?? [];
 
   LoginAuthState copyWith({
@@ -33,6 +35,7 @@ class LoginAuthState {
     String? errorMessage,
     bool? isLoginDone,
     bool? isDeviceUnSupported,
+    bool? isPopUpShow,
   }) {
     return LoginAuthState(
       emailTxt: emailTxt ?? this.emailTxt,
@@ -44,6 +47,7 @@ class LoginAuthState {
       errorMessage: errorMessage ?? this.errorMessage,
       isLoginDone: isLoginDone ?? this.isLoginDone,
       isDeviceUnSupported: isDeviceUnSupported ?? this.isDeviceUnSupported,
+      isPopUpShow: isPopUpShow ?? this.isPopUpShow,
     );
   }
 }

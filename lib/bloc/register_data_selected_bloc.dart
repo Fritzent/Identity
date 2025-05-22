@@ -38,7 +38,7 @@ class RegisterDataSelectedBloc
       Emitter<RegisterDataSelectedState> emit) async {
     emit(state.copyWith(isLoading: true));
     try {
-      String onProgressDataStep = "step_one";
+      String onProgressDataStep = '';
       bool isStepOneSelected = state.selectedItems
           .any((item) => item.sectionName == sectionItemData[0].sectionName);
 
@@ -53,6 +53,14 @@ class RegisterDataSelectedBloc
           .map((item) => item.sectionName)
           .toList();
 
+      if (isStepOneSelected) {
+        onProgressDataStep = 'step_one';
+      } else if (isStepTwoSelected) {
+        onProgressDataStep = 'step_two';
+      } else {
+        onProgressDataStep = 'step_three';
+      }
+
       DataStepperHive.DataStepper dataStepper = DataStepperHive.DataStepper(
           onProgressDataStep: onProgressDataStep,
           isStepOneSelected: isStepOneSelected,
@@ -61,7 +69,11 @@ class RegisterDataSelectedBloc
 
       await saveDataStepperToDatabase(dataStepper);
       await dataStepperBox.add(dataStepper);
-      emit(state.copyWith(isLoading: false, isError: false, errorMessage: '', isChooseDataDone: true));
+      emit(state.copyWith(
+          isLoading: false,
+          isError: false,
+          errorMessage: '',
+          isChooseDataDone: true));
     } catch (e) {
       emit(state.copyWith(
           isLoading: false,

@@ -34,7 +34,7 @@ class _BioFormState extends State<BioForm> {
                 final dataRepository = SelectedDataRepository(selectedPageService);
 
                 if (mounted) {
-                  dataRepository.selectedPageService.checkNextPage(context, 'BioFormPage');
+                  dataRepository.selectedPageService.checkNextPage(context);
                 }
               }
             },

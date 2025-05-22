@@ -33,6 +33,7 @@ void main() async {
   Hive.registerAdapter((CvPdfFileAdapter()));
   Hive.registerAdapter((UserAdapter()));
   Hive.registerAdapter((DataStepperAdapter()));
+  //NOTE : NEED TO MOVE THIS CODE, JUST OPEN THE BOX WHEN ITS REALLY NEEDS, SO IT WILL NOT SHOW ON THE INSPECT ELEMENTS
   await Hive.openBox('themesBox');
   await Hive.openBox('languageBox');
   await Hive.openBox('cvPdfFileBox');

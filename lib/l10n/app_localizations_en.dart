@@ -217,4 +217,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String unexpectedErrorLogin(Object error) {
     return 'Unexpected error $error';
   }
+
+  @override
+  String get errorText => 'Error!';
 }

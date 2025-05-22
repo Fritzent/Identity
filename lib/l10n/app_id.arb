@@ -137,5 +137,7 @@
 
   "loginFailedWithMessage" : "Login gagal karena {error}",
 
-  "unexpectedErrorLogin" : "Terjadi kesalahan {error}"
+  "unexpectedErrorLogin" : "Terjadi kesalahan {error}",
+
+  "errorText" : "Kesalahan!"
 }

@@ -3,7 +3,7 @@ part of 'login_auth_bloc.dart';
 @immutable
 sealed class LoginAuthEvent {}
 
-class OnLoginAuth extends LoginAuthEvent{
+class OnLoginAuth extends LoginAuthEvent {
   final BuildContext context;
   OnLoginAuth(this.context);
 }
@@ -19,3 +19,5 @@ class OnFieldTextChanges extends LoginAuthEvent {
   final BuildContext context;
   OnFieldTextChanges(this.textValue, this.formSection, this.context);
 }
+
+class OnPopUpShow extends LoginAuthEvent {}

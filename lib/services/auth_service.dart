@@ -34,6 +34,8 @@ class AuthService {
           throw Exception(AppLocalizations.of(context)!.wrongPassword);
         case 'invalid-email':
           throw Exception(AppLocalizations.of(context)!.invalidEmail);
+        case 'invalid-credential':
+          throw Exception(AppLocalizations.of(context)!.userNotFound);
         default:
           throw Exception(AppLocalizations.of(context)!.loginFailedWithMessage(e.message.toString()));
       }

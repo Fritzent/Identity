@@ -35,7 +35,7 @@ class _LinkUrlFormState extends State<LinkUrlForm> {
 
                 if (mounted) {
                   dataRepository.selectedPageService
-                      .checkNextPage(context, 'LinkUrlFormPage');
+                      .checkNextPage(context);
                 }
               }
             },

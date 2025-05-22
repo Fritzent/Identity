@@ -137,6 +137,7 @@
 
   "loginFailedWithMessage" : "Login faield {error}",
 
-  "unexpectedErrorLogin" : "Unexpected error {error}"
+  "unexpectedErrorLogin" : "Unexpected error {error}",
 
+  "errorText" : "Error!"
 }

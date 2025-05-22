@@ -8,8 +8,8 @@ class SelectedDataRepository {
 
   SelectedDataRepository(this.selectedPageService);
 
-  FutureOr<void> checkPage(BuildContext context, String stepPage) {
-    return selectedPageService.checkNextPage(context, stepPage);
+  FutureOr<void> checkPage(BuildContext context) {
+    return selectedPageService.checkNextPage(context);
   }
 
   FutureOr<void> checkStepperData(BuildContext context) {

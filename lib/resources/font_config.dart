@@ -20,11 +20,13 @@ class FontList {
   static const double font34 = 34.0;
   static const double font38 = 38.0;
   static const double font40 = 40.0;
+  static const double font42 = 42.0;
   static const double font43 = 43.0;
   static const double font48 = 48.0;
   static const double font64 = 64.0;
   static const double font80 = 80.0;
   static const double font84 = 84.0;
   static const double font100 = 100.0;
+  static const double font150 = 150.0;
   static const double font225 = 225.0;
 }
