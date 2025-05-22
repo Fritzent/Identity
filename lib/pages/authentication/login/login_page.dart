@@ -14,6 +14,7 @@ import 'package:identity/resources/font_config.dart';
 import 'package:identity/routes/app_route_constants.dart';
 import 'package:identity/services/auth_service.dart';
 import 'package:identity/services/selected_page_service.dart';
+import 'package:identity/utils/dialog_helper.dart';
 import 'package:identity/widgets/custom_border_button.dart';
 import 'package:identity/widgets/custom_button.dart';
 import 'package:identity/widgets/custom_text_field.dart';
@@ -27,36 +28,6 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
-  //NOTE : MAKE THIS BECOME A WIDGET TO MAKE IT GENERAL USED
-  void showModernDialog(
-      BuildContext context,
-      String title,
-      String message,
-      String buttonText,
-      Function() onTapDismiss,
-      PanaraDialogType type,
-      LoginAuthBloc? bloc) {
-    PanaraInfoDialog.show(
-      context,
-      title: title,
-      message: message,
-      buttonText: AppLocalizations.of(context)!.understoodText,
-      color: Theme.of(context).primaryColor,
-      textColor: Theme.of(context).primaryColor,
-      buttonTextColor: Theme.of(context).primaryColorDark,
-      onTapDismiss: () {
-        Navigator.of(context).pop();
-        WidgetsBinding.instance.addPostFrameCallback((_) {
-          if (bloc != null) {
-            bloc.add(OnPopUpShow());
-          }
-        });
-      },
-      panaraDialogType: PanaraDialogType.custom,
-      barrierDismissible: false,
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
