@@ -27,6 +27,7 @@ class LoginPage extends StatefulWidget {
 }
 
 class _LoginPageState extends State<LoginPage> {
+  //NOTE : MAKE THIS BECOME A WIDGET TO MAKE IT GENERAL USED
   void showModernDialog(
       BuildContext context,
       String title,
@@ -39,12 +40,12 @@ class _LoginPageState extends State<LoginPage> {
       context,
       title: title,
       message: message,
-      buttonText: "Okay",
+      buttonText: AppLocalizations.of(context)!.understoodText,
       color: Theme.of(context).primaryColor,
       textColor: Theme.of(context).primaryColor,
       buttonTextColor: Theme.of(context).primaryColorDark,
       onTapDismiss: () {
-        Navigator.of(context).pop(); // Close dialog first
+        Navigator.of(context).pop();
         WidgetsBinding.instance.addPostFrameCallback((_) {
           if (bloc != null) {
             bloc.add(OnPopUpShow());

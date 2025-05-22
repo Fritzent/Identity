@@ -80,10 +80,12 @@ class AppLocalizationsId extends AppLocalizations {
   }
 
   @override
-  String get registerDataChooseTitle => 'Data pribadi apa yang ingin anda bagikan kepada kami?';
+  String get registerDataChooseTitle =>
+      'Data pribadi apa yang ingin anda bagikan kepada kami?';
 
   @override
-  String get registerDataChooseSubTitile => 'Pilih setidaknya satu untuk membantu kami mempersiapkan sisi anda';
+  String get registerDataChooseSubTitile =>
+      'Pilih setidaknya satu untuk membantu kami mempersiapkan sisi anda';
 
   @override
   String get bioText => 'Bio';
@@ -110,7 +112,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get biographyText => 'Biografi';
 
   @override
-  String get biographySubTitle => 'Bantu kami untuk mengetahui lebih banyak tentang diri Anda.';
+  String get biographySubTitle =>
+      'Bantu kami untuk mengetahui lebih banyak tentang diri Anda.';
 
   @override
   String get professionalTitle => 'Nama profesional';
@@ -140,7 +143,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get lengthOfWorkExperienceTitle => 'Lama Pengalaman Kerja';
 
   @override
-  String get lengthOfWorkExperienceFieldHint => 'Masukkan pengalaman Anda dalam satu tahun';
+  String get lengthOfWorkExperienceFieldHint =>
+      'Masukkan pengalaman Anda dalam satu tahun';
 
   @override
   String get closeText => 'Tutup';
@@ -149,7 +153,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get chooseText => 'Pilih';
 
   @override
-  String get cvSubTitle => 'Unggah CV terbaru Anda agar lebih banyak orang tertarik dengan latar belakang Anda.';
+  String get cvSubTitle =>
+      'Unggah CV terbaru Anda agar lebih banyak orang tertarik dengan latar belakang Anda.';
 
   @override
   String get importYourFilesText => 'Impor file Anda';
@@ -158,7 +163,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get personalLinkTitle => 'Tautan Pribadi';
 
   @override
-  String get personalLinkSubtitle => 'Bagikan tautan pribadi Anda di media sosial, situs web, atau proyek untuk menarik minat orang.';
+  String get personalLinkSubtitle =>
+      'Bagikan tautan pribadi Anda di media sosial, situs web, atau proyek untuk menarik minat orang.';
 
   @override
   String get linkedinHintText => 'Bagikan profil LinkedIn Anda';
@@ -176,22 +182,27 @@ class AppLocalizationsId extends AppLocalizations {
   String get registrationSuccessText => 'Pendaftaran Berhasil';
 
   @override
-  String get registrationSuccessSubtitle => 'Sekarang saatnya menarik orang dengan profil Anda yang menakjubkan.';
+  String get registrationSuccessSubtitle =>
+      'Sekarang saatnya menarik orang dengan profil Anda yang menakjubkan.';
 
   @override
   String get registrationFailed => 'Pendaftaran Gagal';
 
   @override
-  String get passwordWeakErrorMessage => 'Kata sandi Anda harus minimal 8 karakter dan mencakup setidaknya satu huruf besar, satu huruf kecil, satu angka, dan satu karakter khusus.';
+  String get passwordWeakErrorMessage =>
+      'Kata sandi Anda harus minimal 8 karakter dan mencakup setidaknya satu huruf besar, satu huruf kecil, satu angka, dan satu karakter khusus.';
 
   @override
-  String get passwordNotMatchErrorMessage => 'Kata sandi tidak cocok. Silakan coba lagi.';
+  String get passwordNotMatchErrorMessage =>
+      'Kata sandi tidak cocok. Silakan coba lagi.';
 
   @override
-  String get emailFormatNotCorrect => 'Alamat email Anda tidak dalam format yang benar.';
+  String get emailFormatNotCorrect =>
+      'Alamat email Anda tidak dalam format yang benar.';
 
   @override
-  String get iosGoogleSignUnSupported => 'Maaf, Google Sign In tidak tersedia saat ini karena kami masih memerlukan dukungan finansial Anda untuk mengaktifkan Akun Pengembang Apple.';
+  String get iosGoogleSignUnSupported =>
+      'Maaf, Google Sign In tidak tersedia saat ini karena kami masih memerlukan dukungan finansial Anda untuk mengaktifkan Akun Pengembang Apple.';
 
   @override
   String get understoodText => 'Mengerti';

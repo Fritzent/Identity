@@ -80,10 +80,12 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get registerDataChooseTitle => 'What personal data you wish to share with us?';
+  String get registerDataChooseTitle =>
+      'What personal data you wish to share with us?';
 
   @override
-  String get registerDataChooseSubTitile => 'Choose at least one to help us prepare you side';
+  String get registerDataChooseSubTitile =>
+      'Choose at least one to help us prepare you side';
 
   @override
   String get bioText => 'Bio';
@@ -110,7 +112,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get biographyText => 'Biography';
 
   @override
-  String get biographySubTitle => 'Help us to know more about your self to prepare your biography side.';
+  String get biographySubTitle =>
+      'Help us to know more about your self to prepare your biography side.';
 
   @override
   String get professionalTitle => 'Professional name';
@@ -140,7 +143,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get lengthOfWorkExperienceTitle => 'Length of Work Experience';
 
   @override
-  String get lengthOfWorkExperienceFieldHint => 'Input your experience in a year';
+  String get lengthOfWorkExperienceFieldHint =>
+      'Input your experience in a year';
 
   @override
   String get closeText => 'Close';
@@ -149,7 +153,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get chooseText => 'Choose';
 
   @override
-  String get cvSubTitle => 'Upload your latest CV to get more people interested in your background.';
+  String get cvSubTitle =>
+      'Upload your latest CV to get more people interested in your background.';
 
   @override
   String get importYourFilesText => 'Import your files';
@@ -158,7 +163,8 @@ class AppLocalizationsEn extends AppLocalizations {
   String get personalLinkTitle => 'Personal Link';
 
   @override
-  String get personalLinkSubtitle => 'Share your personal link on social media, websites, or projects to attract people\'s interest.';
+  String get personalLinkSubtitle =>
+      'Share your personal link on social media, websites, or projects to attract people\'s interest.';
 
   @override
   String get linkedinHintText => 'Share your LinkedIn profile';
@@ -176,22 +182,27 @@ class AppLocalizationsEn extends AppLocalizations {
   String get registrationSuccessText => 'Registration Success';
 
   @override
-  String get registrationSuccessSubtitle => 'It\'s time to attract people with your amazing profile.';
+  String get registrationSuccessSubtitle =>
+      'It\'s time to attract people with your amazing profile.';
 
   @override
   String get registrationFailed => 'Registration Failed';
 
   @override
-  String get passwordWeakErrorMessage => 'Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.';
+  String get passwordWeakErrorMessage =>
+      'Your password must be at least 8 characters long and include at least one uppercase letter, one lowercase letter, one number, and one special character.';
 
   @override
-  String get passwordNotMatchErrorMessage => 'Passwords do not match. Please try again.';
+  String get passwordNotMatchErrorMessage =>
+      'Passwords do not match. Please try again.';
 
   @override
-  String get emailFormatNotCorrect => 'Your email address is not in the correct format.';
+  String get emailFormatNotCorrect =>
+      'Your email address is not in the correct format.';
 
   @override
-  String get iosGoogleSignUnSupported => 'Sorry, Google Sign In is not available at this time because we still need your financial support to activate the Apple Developer Account.';
+  String get iosGoogleSignUnSupported =>
+      'Sorry, Google Sign In is not available at this time because we still need your financial support to activate the Apple Developer Account.';
 
   @override
   String get understoodText => 'Understood';
