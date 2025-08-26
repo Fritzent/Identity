@@ -5,14 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
-import 'package:identity/bloc/language_data_bloc.dart';
+import 'package:identity/pages/started/language_data_bloc.dart';
 import 'package:identity/l10n/app_localizations.dart';
 import 'package:identity/l10n/l10n.dart';
 import 'package:identity/resources/colors.dart';
 import 'package:identity/routes/app_route_constants.dart';
 import 'package:identity/widgets/custom_button.dart';
 
-import '../resources/font_config.dart';
+import '../../resources/font_config.dart';
 
 class StartedPage extends StatefulWidget {
   const StartedPage({super.key});
@@ -31,9 +31,11 @@ class _StartedPageState extends State<StartedPage> {
             return ConstrainedBox(
               constraints: BoxConstraints(
                 maxWidth: kIsWeb
-                    ? (MediaQuery.of(context).size.width / 2 >= 800
-                        ? MediaQuery.of(context).size.width * 0.4
-                        : MediaQuery.of(context).size.width)
+                    ? (MediaQuery.of(context).size.width <= 600
+                        ? MediaQuery.of(context).size.width
+                        : MediaQuery.of(context).size.width * 0.6 <= 550
+                            ? 500
+                            : MediaQuery.of(context).size.width * 0.6)
                     : MediaQuery.of(context).size.width,
               ),
               child: Padding(
@@ -260,7 +262,7 @@ class _StartedPageState extends State<StartedPage> {
                                 ),
                               ],
                             ),
-                          )
+                          ),
                         ],
                       ),
                     ),

@@ -9,7 +9,7 @@ import 'package:identity/resources/colors.dart';
 import 'package:identity/resources/font_config.dart';
 import 'package:identity/services/selected_page_service.dart';
 import 'package:identity/widgets/custom_button.dart';
-import 'package:identity/widgets/custom_text_field.dart';
+import 'package:identity/widgets/custom_text_field/custom_text_field.dart';
 
 class LinkUrlForm extends StatefulWidget {
   const LinkUrlForm({super.key});

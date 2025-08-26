@@ -6,9 +6,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:hive/hive.dart';
 import 'package:identity/data/section_data_items.dart';
+import 'package:identity/model/data_stepper_model.dart';
 import 'package:identity/model/section_data_item.dart';
 
-import '../database/data_stepper.dart' as DataStepperHive;
+import '../../../../database/data_stepper.dart' as data_stepper_hive;
 
 part 'register_data_selected_event.dart';
 part 'register_data_selected_state.dart';
@@ -61,7 +62,7 @@ class RegisterDataSelectedBloc
         onProgressDataStep = 'step_three';
       }
 
-      DataStepperHive.DataStepper dataStepper = DataStepperHive.DataStepper(
+      data_stepper_hive.DataStepper dataStepper = data_stepper_hive.DataStepper(
           onProgressDataStep: onProgressDataStep,
           isStepOneSelected: isStepOneSelected,
           isStepTwoSelected: isStepTwoSelected,
@@ -84,19 +85,20 @@ class RegisterDataSelectedBloc
   }
 
   Future<void> saveDataStepperToDatabase(
-      DataStepperHive.DataStepper dataStepper) async {
+      data_stepper_hive.DataStepper dataStepper) async {
     try {
       final stepperCollection =
           FirebaseFirestore.instance.collection('DataStepper');
       final user = FirebaseAuth.instance.currentUser;
       if (user != null) {
-        await stepperCollection.doc(user.uid).set({
-          'uid': user.uid,
-          'onprogress_data_step': dataStepper.onProgressDataStep,
-          'isStepOneSelected': dataStepper.isStepOneSelected,
-          'isStepTwoSelected': dataStepper.isStepTwoSelected,
-          'listStepThirdSelected': dataStepper.listStepThirdSelected,
-        });
+        DataStepper dataStepperToSave = DataStepper(
+          authUserId: user.uid,
+          onProgressDataStep: dataStepper.onProgressDataStep,
+          isStepOneSelected: dataStepper.isStepOneSelected,
+          isStepTwoSelected: dataStepper.isStepTwoSelected,
+          listStepThirdSelected: dataStepper.listStepThirdSelected,
+        );
+        await stepperCollection.doc(user.uid).set(dataStepperToSave.toJson());
       }
     } catch (e) {
       print(e.toString());

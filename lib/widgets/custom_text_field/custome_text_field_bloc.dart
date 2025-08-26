@@ -7,12 +7,13 @@ import 'package:identity/l10n/app_localizations.dart';
 part 'custome_text_field_event.dart';
 part 'custome_text_field_state.dart';
 
-class CustomeTextFieldBloc extends Bloc<CustomeTextFieldEvent, CustomeTextFieldState> {
+class CustomeTextFieldBloc
+    extends Bloc<CustomeTextFieldEvent, CustomeTextFieldState> {
   CustomeTextFieldBloc() : super(CustomeTextFieldState()) {
     on<OnFocusChange>(onFocusChange);
     on<OnTextChange>(onTextChange);
     on<OnUpdateField>(onUpdateField);
-    on<OnChangeObscureText> (onChangeObscureText);
+    on<OnChangeObscureText>(onChangeObscureText);
   }
 
   FutureOr<void> onFocusChange(
@@ -28,11 +29,12 @@ class CustomeTextFieldBloc extends Bloc<CustomeTextFieldEvent, CustomeTextFieldS
     String error = '';
 
     if (event.value.isEmpty && state.countInit >= 1) {
-      error = AppLocalizations.of(state.context!)!.textFieldErrorEmptyMessage(state.formSection);
+      error = AppLocalizations.of(state.context!)!
+          .textFieldErrorEmptyMessage(state.formSection);
     }
 
     int sumCountInit = state.countInit + 1;
-    
+
     emit(state.copyWith(
         isEmpty: event.isEmpty,
         fieldValue: event.value,
@@ -48,7 +50,8 @@ class CustomeTextFieldBloc extends Bloc<CustomeTextFieldEvent, CustomeTextFieldS
     emit(state.copyWith(controller: newController));
   }
 
-  FutureOr<void> onChangeObscureText(OnChangeObscureText event, Emitter<CustomeTextFieldState> emit) {
+  FutureOr<void> onChangeObscureText(
+      OnChangeObscureText event, Emitter<CustomeTextFieldState> emit) {
     emit(state.copyWith(obscureText: event.obscureText));
   }
 }

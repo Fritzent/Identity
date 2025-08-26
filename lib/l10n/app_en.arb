@@ -81,7 +81,7 @@
 
   "dateOfBirthFieldHint" : "Select your date birthday",
 
-  "currentLastJobTitle" : "Current / Last job position",
+  "currentLastJobTitle" : "Job position",
 
   "currentLastJobFieldHint" : "Input your job position",
 
@@ -139,5 +139,17 @@
 
   "unexpectedErrorLogin" : "Unexpected error {error}",
 
-  "errorText" : "Error!"
+  "errorText" : "Error!",
+  
+  "allReserved" : "@2025 Fritzent All rights reserved",
+
+  "experienceText" : "Experience",
+
+  "latestJobPositionText" : "Input your latest job position",
+
+  "yoeText" : "Input your year of experience",
+
+  "jobDescribeTextTitle": "Tell us about the job",
+
+  "jobDescribeTextHint" : "Describe your latest job"
 }

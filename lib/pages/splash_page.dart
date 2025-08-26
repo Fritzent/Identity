@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:identity/l10n/app_localizations.dart';
 import 'package:identity/routes/app_route_constants.dart';
+import 'package:identity/services/theme_service.dart';
 import 'package:rive/rive.dart';
 
 class SplashPage extends StatefulWidget {
@@ -28,8 +30,6 @@ class _SplashPageState extends State<SplashPage> {
       Future.delayed(const Duration(milliseconds: 100), () {
         if (mounted) {
           GoRouter.of(context).goNamed(IdentityRouteConstant.startedRouteName);
-        } else {
-          print('Widget is not mounted, skipping navigation.');
         }
       });
     });
@@ -44,7 +44,7 @@ class _SplashPageState extends State<SplashPage> {
         child: Center(
           child: Stack(children: [
             RiveAnimation.asset(
-              Theme.of(context).brightness == Brightness.dark
+              ThemeService.getThemeMode(context)
                   ? 'assets/rive_motion/identity_dark_mode_splash.riv'
                   : 'assets/rive_motion/identity_light_mode_splash.riv',
               fit: BoxFit.contain,
@@ -55,7 +55,7 @@ class _SplashPageState extends State<SplashPage> {
             Align(
               alignment: Alignment.bottomCenter,
               child: Text(
-                '@2025 Fritzent All rights reserved',
+                AppLocalizations.of(context)!.allReserved,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
             )

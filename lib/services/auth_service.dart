@@ -9,7 +9,21 @@ import 'package:identity/l10n/app_localizations.dart';
 
 class AuthService {
   static final FirebaseAuth _auth = FirebaseAuth.instance;
-  static final _googleSignIn = GoogleSignIn();
+
+  static bool isStrongPassword(String password) {
+    final strongPasswordRegex =
+        RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$');
+
+    return strongPasswordRegex.hasMatch(password);
+  }
+
+  static bool isValidEmail(String email) {
+    final emailRegex = RegExp(
+      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
+    );
+
+    return emailRegex.hasMatch(email);
+  }
 
   Future<User?> registerWithEmail(String email, String password) async {
     try {
@@ -55,12 +69,15 @@ class AuthService {
       return null;
     } else {
       try {
-        final googleUser = await _googleSignIn.signIn();
+        final googleSignInInit = GoogleSignIn.instance;
+        await googleSignInInit.initialize();
+        GoogleSignInAccount? googleUser = await googleSignInInit.authenticate();
+
         if (googleUser == null) return null;
 
-        final googleAuth = await googleUser.authentication;
+        final googleAuth = googleUser.authentication;
         final credential = GoogleAuthProvider.credential(
-          accessToken: googleAuth.accessToken,
+          accessToken: googleAuth.idToken,
           idToken: googleAuth.idToken,
         );
 

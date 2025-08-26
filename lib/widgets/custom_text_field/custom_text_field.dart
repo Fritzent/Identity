@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:identity/bloc/custome_text_field_bloc.dart';
+import 'package:identity/widgets/custom_text_field/custome_text_field_bloc.dart';
 import 'package:identity/l10n/app_localizations.dart';
 import 'package:identity/resources/colors.dart';
 import 'package:identity/resources/font_config.dart';
@@ -95,11 +95,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
           crossAxisAlignment: CrossAxisAlignment.start,
           spacing: FontList.font12,
           children: [
-            Text(
-              widget.textFieldLabel,
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  fontSize: FontList.font16, fontWeight: FontWeight.bold),
-            ),
+            if (widget.textFieldLabel.isNotEmpty) ...[
+              Text(
+                widget.textFieldLabel,
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(
+                    fontSize: FontList.font16, fontWeight: FontWeight.bold),
+              ),
+            ],
             if (widget.isDateSection)
               GestureDetector(
                 onTap: () async {
@@ -155,7 +157,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                       state.controller?.text = formattedDate;
                       widget.onChanged!(formattedDate);
                     }
-                                    }
+                  }
                 },
                 child: AbsorbPointer(
                   child: TextFormField(
@@ -215,7 +217,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                   child: SvgPicture.asset(
                                     widget.obscureText
                                         ? (state.obscureText
-                                            ? 'assets/image/ic_visible_password.svg'
+                                            ? 'assets/image/ic_hide_password.svg'
                                             : widget.rightIconPath.toString())
                                         : widget.rightIconPath.toString(),
                                     colorFilter: ColorFilter.mode(
@@ -340,7 +342,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                                 child: SvgPicture.asset(
                                   widget.obscureText
                                       ? (state.obscureText
-                                          ? 'assets/image/ic_visible_password.svg'
+                                          ? 'assets/image/ic_hide_password.svg'
                                           : widget.rightIconPath.toString())
                                       : widget.rightIconPath.toString(),
                                   colorFilter: ColorFilter.mode(

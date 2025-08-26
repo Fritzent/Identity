@@ -134,7 +134,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get dateOfBirthFieldHint => 'Pilih tanggal ulang tahun Anda';
 
   @override
-  String get currentLastJobTitle => 'Posisi pekerjaan saat ini / terakhir';
+  String get currentLastJobTitle => 'Posisi pekerjaan';
 
   @override
   String get currentLastJobFieldHint => 'Masukkan posisi pekerjaan Anda';
@@ -231,4 +231,22 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String get errorText => 'Kesalahan!';
+
+  @override
+  String get allReserved => '@2025 Fritzent Semua hak dilindungi undang-undang';
+
+  @override
+  String get experienceText => 'Pengalaman';
+
+  @override
+  String get latestJobPositionText => 'Masukkan posisi pekerjaan terbaru anda';
+
+  @override
+  String get yoeText => 'Masukkan tahun pengalaman anda';
+
+  @override
+  String get jobDescribeTextTitle => 'Beritahu kami tentang pekerjaan ini';
+
+  @override
+  String get jobDescribeTextHint => 'Jelaskan pekerjaan terbaru anda';
 }

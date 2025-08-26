@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:identity/utils/thems_utils.dart';
+import 'package:identity/utils/themes_utils.dart';
 
 part 'theme_data_event.dart';
 part 'theme_data_state.dart';

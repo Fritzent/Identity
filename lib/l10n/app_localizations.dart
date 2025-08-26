@@ -341,7 +341,7 @@ abstract class AppLocalizations {
   /// No description provided for @currentLastJobTitle.
   ///
   /// In en, this message translates to:
-  /// **'Current / Last job position'**
+  /// **'Job position'**
   String get currentLastJobTitle;
 
   /// No description provided for @currentLastJobFieldHint.
@@ -511,6 +511,42 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Error!'**
   String get errorText;
+
+  /// No description provided for @allReserved.
+  ///
+  /// In en, this message translates to:
+  /// **'@2025 Fritzent All rights reserved'**
+  String get allReserved;
+
+  /// No description provided for @experienceText.
+  ///
+  /// In en, this message translates to:
+  /// **'Experience'**
+  String get experienceText;
+
+  /// No description provided for @latestJobPositionText.
+  ///
+  /// In en, this message translates to:
+  /// **'Input your latest job position'**
+  String get latestJobPositionText;
+
+  /// No description provided for @yoeText.
+  ///
+  /// In en, this message translates to:
+  /// **'Input your year of experience'**
+  String get yoeText;
+
+  /// No description provided for @jobDescribeTextTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tell us about the job'**
+  String get jobDescribeTextTitle;
+
+  /// No description provided for @jobDescribeTextHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Describe your latest job'**
+  String get jobDescribeTextHint;
 }
 
 class _AppLocalizationsDelegate

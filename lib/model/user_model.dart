@@ -11,12 +11,14 @@ class UserModels {
   final String email;
   final String userId;
   final String authUserId;
+  final String? uid;
 
   UserModels({
     required this.username,
     required this.email,
     required this.userId,
     required this.authUserId,
+    this.uid,
   });
 
   UserModels copyWith({
@@ -24,12 +26,14 @@ class UserModels {
     String? email,
     String? userId,
     String? authUserId,
+    String? uid,
   }) =>
       UserModels(
         username: username ?? this.username,
         email: email ?? this.email,
         userId: userId ?? this.userId,
         authUserId: authUserId ?? this.authUserId,
+        uid: uid ?? this.uid,
       );
 
   factory UserModels.fromJson(Map<String, dynamic> json) => UserModels(
@@ -37,6 +41,7 @@ class UserModels {
         email: json["email"],
         userId: json["user_id"],
         authUserId: json["authUserId"],
+        uid: json["uid"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -44,5 +49,6 @@ class UserModels {
         "email": email,
         "user_id": userId,
         "authUserId": authUserId,
+        "uid": uid,
       };
 }

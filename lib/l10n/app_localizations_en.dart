@@ -134,7 +134,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dateOfBirthFieldHint => 'Select your date birthday';
 
   @override
-  String get currentLastJobTitle => 'Current / Last job position';
+  String get currentLastJobTitle => 'Job position';
 
   @override
   String get currentLastJobFieldHint => 'Input your job position';
@@ -231,4 +231,22 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get errorText => 'Error!';
+
+  @override
+  String get allReserved => '@2025 Fritzent All rights reserved';
+
+  @override
+  String get experienceText => 'Experience';
+
+  @override
+  String get latestJobPositionText => 'Input your latest job position';
+
+  @override
+  String get yoeText => 'Input your year of experience';
+
+  @override
+  String get jobDescribeTextTitle => 'Tell us about the job';
+
+  @override
+  String get jobDescribeTextHint => 'Describe your latest job';
 }

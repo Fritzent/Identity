@@ -81,7 +81,7 @@
 
   "dateOfBirthFieldHint" : "Pilih tanggal ulang tahun Anda",
 
-  "currentLastJobTitle" : "Posisi pekerjaan saat ini / terakhir",
+  "currentLastJobTitle" : "Posisi pekerjaan",
 
   "currentLastJobFieldHint" : "Masukkan posisi pekerjaan Anda",
 
@@ -139,5 +139,17 @@
 
   "unexpectedErrorLogin" : "Terjadi kesalahan {error}",
 
-  "errorText" : "Kesalahan!"
+  "errorText" : "Kesalahan!",
+
+  "allReserved" : "@2025 Fritzent Semua hak dilindungi undang-undang",
+
+  "experienceText" : "Pengalaman",
+
+  "latestJobPositionText" : "Masukkan posisi pekerjaan terbaru anda",
+
+  "yoeText" : "Masukkan tahun pengalaman anda",
+
+  "jobDescribeTextTitle": "Beritahu kami tentang pekerjaan ini",
+
+  "jobDescribeTextHint" : "Jelaskan pekerjaan terbaru anda"
 }

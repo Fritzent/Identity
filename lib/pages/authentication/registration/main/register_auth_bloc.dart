@@ -10,9 +10,10 @@ import 'package:hive/hive.dart';
 import 'package:identity/l10n/app_localizations.dart';
 import 'package:identity/model/user_model.dart';
 import 'package:identity/repository/auth_repository.dart';
+import 'package:identity/services/auth_service.dart';
 import 'package:uuid/uuid.dart';
 
-import '../database/user.dart' as UserModelHive;
+import '../../../../database/user.dart' as user_model_hive;
 
 part 'register_auth_event.dart';
 part 'register_auth_state.dart';
@@ -53,7 +54,7 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
               authUserId: user.uid);
           await saveUserToDatabase(userGoogle);
 
-          UserModelHive.User userGoogleHive = UserModelHive.User(
+          user_model_hive.User userGoogleHive = user_model_hive.User(
               userId: userId,
               username: user.displayName.toString(),
               email: user.email.toString());
@@ -103,7 +104,7 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
               authUserId: user.uid);
           await saveUserToDatabase(userModel);
 
-          UserModelHive.User userHive = UserModelHive.User(
+          user_model_hive.User userHive = user_model_hive.User(
               username: state.nameTxt, email: state.emailTxt, userId: userId);
 
           await userBox.add(userHive);
@@ -128,7 +129,7 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
   }
 
   FutureOr<void> onFieldTextChanges(
-      OnFieldTextChanges event, Emitter<RegisterAuthState> emit) {
+      OnFieldTextChanges event, Emitter<RegisterAuthState> emit) async {
     if (event.formSection == AppLocalizations.of(event.context)!.fullNameText) {
       if (event.textValue.isNotEmpty) {
         emit(state.copyWith(
@@ -151,7 +152,7 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
     } else if (event.formSection ==
         AppLocalizations.of(event.context)!.emailText) {
       if (event.textValue.isNotEmpty) {
-        bool isValidEmail = validateEmail(event.textValue);
+        bool isValidEmail = AuthService.isValidEmail(event.textValue);
 
         if (isValidEmail) {
           emit(state.copyWith(
@@ -186,7 +187,7 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
     } else if (event.formSection ==
         AppLocalizations.of(event.context)!.createPasswordText) {
       if (event.textValue.isNotEmpty) {
-        bool isValidPassword = validatePassword(event.textValue);
+        bool isValidPassword = AuthService.isStrongPassword(event.textValue);
         if (isValidPassword) {
           emit(state.copyWith(
               passwordTxt: event.textValue,
@@ -195,7 +196,7 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
                   .toList()));
         } else {
           emit(state.copyWith(
-              passwordTxt: '',
+              passwordTxt: event.textValue,
               isValidDataForm: false,
               fieldErrorComponent: [
                 ...state.fieldErrorComponent,
@@ -220,7 +221,8 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
     } else if (event.formSection ==
         AppLocalizations.of(event.context)!.confirmPasswordText) {
       if (event.textValue.isNotEmpty) {
-        if (event.textValue == state.passwordTxt) {
+        if (event.textValue == state.passwordTxt &&
+            state.passwordTxt.isNotEmpty) {
           emit(state.copyWith(
               confirmPasswordTxt: event.textValue,
               fieldErrorComponent: state.fieldErrorComponent
@@ -228,7 +230,7 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
                   .toList()));
         } else {
           emit(state.copyWith(
-              confirmPasswordTxt: '',
+              confirmPasswordTxt: event.textValue,
               isValidDataForm: false,
               fieldErrorComponent: [
                 ...state.fieldErrorComponent,
@@ -251,21 +253,7 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
             ]));
       }
     }
-  }
-
-  bool validatePassword(String password) {
-    final strongPasswordRegex =
-        RegExp(r'^(?=.*[A-Z])(?=.*[a-z])(?=.*\d)(?=.*[\W_])[A-Za-z\d\W_]{8,}$');
-
-    return strongPasswordRegex.hasMatch(password);
-  }
-
-  bool validateEmail(String email) {
-    final emailRegex = RegExp(
-      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-    );
-
-    return emailRegex.hasMatch(email);
+    await validateForm(emit, event.context);
   }
 
   Future<void> validateForm(
@@ -328,6 +316,37 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
             isValidDataForm: false,
             fieldErrorComponent: updatedFieldErrorComponent));
       }
+      if (state.passwordTxt.isNotEmpty) {
+        if (state.passwordTxt != state.confirmPasswordTxt) {
+          if (updatedFieldErrorComponent.isNotEmpty) {
+            final errorPasswordTxt = updatedFieldErrorComponent.firstWhere(
+              (error) => error.containsKey(
+                  AppLocalizations.of(context)!.createPasswordText),
+              orElse: () => <String, String>{},
+            );
+
+            if (errorPasswordTxt.isEmpty) {
+              updatedFieldErrorComponent.add({
+                AppLocalizations.of(context)!.createPasswordText:
+                    AppLocalizations.of(context)!.passwordNotMatchErrorMessage
+              });
+
+              emit(state.copyWith(
+                  isValidDataForm: false,
+                  fieldErrorComponent: updatedFieldErrorComponent));
+            }
+          } else {
+            updatedFieldErrorComponent.add({
+              AppLocalizations.of(context)!.createPasswordText:
+                  AppLocalizations.of(context)!.passwordNotMatchErrorMessage
+            });
+
+            emit(state.copyWith(
+                isValidDataForm: false,
+                fieldErrorComponent: updatedFieldErrorComponent));
+          }
+        }
+      }
       if (state.confirmPasswordTxt.isEmpty) {
         if (updatedFieldErrorComponent.isNotEmpty) {
           updatedFieldErrorComponent.removeWhere((error) => error
@@ -344,19 +363,51 @@ class RegisterAuthBloc extends Bloc<RegisterAuthEvent, RegisterAuthState> {
             isValidDataForm: false,
             fieldErrorComponent: updatedFieldErrorComponent));
       }
+      if (state.confirmPasswordTxt.isNotEmpty) {
+        if (state.passwordTxt != state.confirmPasswordTxt) {
+          if (updatedFieldErrorComponent.isNotEmpty) {
+            final errorConfirmPasswordTxt =
+                updatedFieldErrorComponent.firstWhere(
+              (error) => error.containsKey(
+                  AppLocalizations.of(context)!.confirmPasswordText),
+              orElse: () => <String, String>{},
+            );
+
+            if (errorConfirmPasswordTxt.isEmpty) {
+              updatedFieldErrorComponent.add({
+                AppLocalizations.of(context)!.confirmPasswordText:
+                    AppLocalizations.of(context)!.passwordNotMatchErrorMessage
+              });
+
+              emit(state.copyWith(
+                  isValidDataForm: false,
+                  fieldErrorComponent: updatedFieldErrorComponent));
+            }
+          } else {
+            updatedFieldErrorComponent.add({
+              AppLocalizations.of(context)!.confirmPasswordText:
+                  AppLocalizations.of(context)!.passwordNotMatchErrorMessage
+            });
+
+            emit(state.copyWith(
+                isValidDataForm: false,
+                fieldErrorComponent: updatedFieldErrorComponent));
+          }
+        }
+      }
     }
   }
 
   Future<void> saveUserToDatabase(UserModels user) async {
     try {
       final userCollection = FirebaseFirestore.instance.collection('Users');
-      await userCollection.doc(user.authUserId).set({
-        'username': user.username,
-        'email': user.email,
-        'user_id': user.userId,
-        'authUserId': user.authUserId,
-        'uid': FirebaseAuth.instance.currentUser!.uid,
-      });
+      UserModels userModel = UserModels(
+          username: user.username,
+          email: user.email,
+          userId: user.userId,
+          authUserId: user.authUserId,
+          uid: FirebaseAuth.instance.currentUser!.uid);
+      await userCollection.doc(user.authUserId).set(userModel.toJson());
     } catch (e) {
       print(e.toString());
     }

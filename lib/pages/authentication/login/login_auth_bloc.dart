@@ -10,9 +10,10 @@ import 'package:hive/hive.dart';
 import 'package:identity/l10n/app_localizations.dart';
 import 'package:identity/model/user_model.dart';
 import 'package:identity/repository/auth_repository.dart';
+import 'package:identity/services/auth_service.dart';
 import 'package:uuid/uuid.dart';
 
-import '../database/user.dart' as UserModelHive;
+import '../../../database/user.dart' as user_model_hive;
 
 part 'login_auth_event.dart';
 part 'login_auth_state.dart';
@@ -35,8 +36,8 @@ class LoginAuthBloc extends Bloc<LoginAuthEvent, LoginAuthState> {
     if (state.isValidDataForm) {
       emit(state.copyWith(isLoading: true));
       try {
-        final user =
-            await authRepository.login(state.emailTxt, state.passwordTxt, event.context);
+        final user = await authRepository.login(
+            state.emailTxt, state.passwordTxt, event.context);
         if (user != null) {
           bool isUserExitsOnCollection = await checkIfUserExists(user.uid);
           var uuid = Uuid();
@@ -61,7 +62,7 @@ class LoginAuthBloc extends Bloc<LoginAuthEvent, LoginAuthState> {
               }
             }
           }
-          UserModelHive.User userGoogleHive = UserModelHive.User(
+          user_model_hive.User userGoogleHive = user_model_hive.User(
               userId: userId,
               username: user.displayName.toString(),
               email: user.email.toString());
@@ -128,7 +129,7 @@ class LoginAuthBloc extends Bloc<LoginAuthEvent, LoginAuthState> {
       OnFieldTextChanges event, Emitter<LoginAuthState> emit) {
     if (event.formSection == AppLocalizations.of(event.context)!.emailText) {
       if (event.textValue.isNotEmpty) {
-        bool isValidEmail = validateEmail(event.textValue);
+        bool isValidEmail = AuthService.isValidEmail(event.textValue);
         if (isValidEmail) {
           emit(state.copyWith(
               emailTxt: event.textValue,
@@ -182,14 +183,6 @@ class LoginAuthBloc extends Bloc<LoginAuthEvent, LoginAuthState> {
     }
   }
 
-  bool validateEmail(String email) {
-    final emailRegex = RegExp(
-      r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$',
-    );
-
-    return emailRegex.hasMatch(email);
-  }
-
   FutureOr<void> onGoogleSignInAuth(
       OnGoogleSignInAuth event, Emitter<LoginAuthState> emit) async {
     emit(state.copyWith(isLoading: true));
@@ -230,7 +223,7 @@ class LoginAuthBloc extends Bloc<LoginAuthEvent, LoginAuthState> {
             }
           }
 
-          UserModelHive.User userGoogleHive = UserModelHive.User(
+          user_model_hive.User userGoogleHive = user_model_hive.User(
               userId: userId,
               username: user.displayName.toString(),
               email: user.email.toString());
@@ -278,19 +271,19 @@ class LoginAuthBloc extends Bloc<LoginAuthEvent, LoginAuthState> {
   Future<void> saveUserToDatabase(UserModels user) async {
     try {
       final userCollection = FirebaseFirestore.instance.collection('Users');
-      await userCollection.doc(user.authUserId).set({
-        'username': user.username,
-        'email': user.email,
-        'user_id': user.userId,
-        'authUserId': user.authUserId,
-        'uid': FirebaseAuth.instance.currentUser!.uid,
-      });
+      UserModels userModel = UserModels(
+          username: user.username,
+          email: user.email,
+          userId: user.userId,
+          authUserId: user.authUserId,
+          uid: FirebaseAuth.instance.currentUser!.uid);
+      await userCollection.doc(user.authUserId).set(userModel.toJson());
     } catch (e) {
       print(e.toString());
     }
   }
 
-  FutureOr<void>onPopUpShow(OnPopUpShow event, Emitter<LoginAuthState> emit){
+  FutureOr<void> onPopUpShow(OnPopUpShow event, Emitter<LoginAuthState> emit) {
     emit(state.copyWith(isPopUpShow: !state.isPopUpShow, isError: false));
   }
 }
